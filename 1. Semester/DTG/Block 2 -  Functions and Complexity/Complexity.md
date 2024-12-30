@@ -1,4 +1,4 @@
-# Big-$O$ Notation
+# 1 Big-$O$ Notation
 Big-$O$ notation describes the growth of functions i.e. how many more operations a function has to do, depending on how big the input is. 
 
 Let $f$ and $f$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $O(g(x))$ if there are constants $C$ and $k$ such that $\left| f(x) \right| \le C \left| g(x) \right|$ whenever  $x>k$. 
@@ -18,7 +18,7 @@ The witness $k$ is the threshold for $x$ (or $n$), for which the complexity hold
 
 >[!NOTE] Theorem 1
 > * Let $f(x)=a_n x^n + a_{n-1} x^{n-1}+ \cdots + a_1 x + a_0$ where $a_0, a_1, \ldots a_{n-1}, a_n$ are real numbers. Then $f(x)$ is $O(x^n)$
-## Examples
+## 1.1 Examples
 1. 
 Let $b>1$ then $n \le b^n \Rightarrow log_b(n) \le n$
 $log_b(n) \in O(n), C=1, k=0$, because
@@ -43,7 +43,7 @@ $$
 $log_b(n!) \in O(n*log_b(n)), C = 1, k = 1$
 
 ![[86778.png]]
-# Sums of Functions
+# 2 Sums of Functions
 Let $f_1 \in O(g_1)$ and $f_2 \in O(g_2)$, with witnesses $C_1, k_1$ and $C_2, k_2$. This means
 $$ 
 \begin{aligned}
@@ -62,7 +62,7 @@ $$
 $$
 Hence $(f_1+f_2)(x) \in O(g(x))$.
 
-## Examples
+## 2.1 Examples
 $$ 
 \begin{aligned}
 f_1(x) &= 3x^2 + x + 9 \\
@@ -76,7 +76,7 @@ $$
 This holds because the highest power of $x$ in the sum of the functions is 3. 
 >[!NOTE] Theorem 2
 > * Suppose that $f_1(x)$ is $O(g_1(x))$ and that $f_2(x)$ is $O(g_2(x))$. Then $(f_1+f_2)(x)$ is $O(g(x))$, where $g(x)=max(\left| g_1(x) \right|, \left| g_2(x) \right|))$ for all $x$.
-# Product of Functions
+# 3 Product of Functions
 Let $f_1 \in O(g_1)$ and $f_2 \in O(g_2)$, with witnesses $C_1, k_1$ and $C_2, k_2$. This means
 $$
 \begin{aligned}
@@ -93,7 +93,7 @@ $$
 \end{aligned}
 $$
 Hence $(f_1 f_2)(x) \in O((g_1 g_2)(x))$.
-## Examples
+## 3.1 Examples
 $$ 
 \begin{aligned}
 f_1(x) &= 3x^2 + x + 9 \\
@@ -112,7 +112,7 @@ This holds since the highest power of $x$ is 5 in the product of the two functio
 
 > [!NOTE] Theorem 4
 > Let $f(x)=a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$, where $a_0, a_1, \ldots, a_n$ are real nmbers with $a_n \neq 0$. Then $f(x)$ is of order $x^n$
-# Big-Omega and Big-Theta Notation
+# 4 Big-Omega and Big-Theta Notation
 Big-$O$ notation is used to describe the growth of functions, but it has limitations. When $f(x)$ is $O(g(x))$, we have an upper bound, in terms of $g(x)$, for the size of $f(x)$ for large values of $x$. 
 
 Big-$O$ notation does not provide a lower bound, for this we use *big-Omega*, denoted by big-$\Omega$. 
@@ -120,23 +120,23 @@ Big-$O$ notation does not provide a lower bound, for this we use *big-Omega*, de
 When we want to give both an upper and a lower bound on the size of a function, we use big-Theta notation, denoted by big-$\Theta$ 
 
 When $f(x)$ is $\Theta (g(x))$, it is also the case that $g(x)$ is $\Theta (f(x))$. $f(x)$ is $\Theta(g(x))$ if and **only if** $f(x)$ is $O(g(x))$ **and** $g(x)$ is $O(f(x))$. 
-# Algorithm
+# 5 Algorithm
 An algorithm is a finite sequence of precise instructions for performing a computation or solving a problem.
 
 We use complexity to describe how efficient an algorithm is because speed is too dependent on hardware/software. Complexity can be measured by the time / number of operations it uses or the space it takes up i.e. how much memory it uses.
-# Algorithms
+# 6 Algorithms
 > An *algorithm* is a finite sequence of precise instructions for performing a computation or for solving a problem.
-# Complexity of Algorithms
-## Time Complexity
+# 7 Complexity of Algorithms
+## 7.1 Time Complexity
 The time complexity of an algorithm can be expressed in terms of the number of operations used by the algorithm when the input has a particular size.
-### Best, Average and Worst Case
+### 7.1.1 Best, Average and Worst Case
 Depending on the algorithm, it may have a different number of operations depending on multiple factors. E.g. When using a sorting algorithm, it may be that the unsorted list i.e. the input already is sorted. This situation would be the best case, as the algorithm would only have to do the checks to see if every item is sorted, rather than actually moving around elements. 
 
 Another example could be searching algorithms. A common one is "Linear Search", which iterates through a list, doing a check each item, until it finds the correct element. This algorithm could have a different number of operations depending on where the item is in the list. E.g. if it is the first item of the list, only one operation is done - the check. If the item is not in the list, however, then it would take $2n$ + 2 checks (two checks for each item it iterates through, one for checking if the end of the list is reached, and one for checking if the element is the right one). 
 
 Calculations can be done to find the best, average and worst cases for algorithms, i.e. the Big-Omega, Big-Theta and Big-O. 
 
-#### Examples
+#### 7.1.1.1 Examples
 Calculating the linear search algorithm can be done the following way.
 - We assume $x$ is in the list.
 - Equal chance for $x$ to be any of the elements.
@@ -152,23 +152,23 @@ Calculating the linear search algorithm can be done the following way.
 | $\Theta(n^b)$              | Polynomial complexity   |
 | $\Theta(b^n)$, where $b>1$ | Exponential complexity  |
 | $\Theta(n!)$               | Factorial complexity    |
-# Definitions
-## Triangle Inequality
+# 8 Definitions
+## 8.1 Triangle Inequality
 If $f(x)$ and $g(x)$ are functions, then the triangle inequality states:
 $$
 \left| f(x) + g(x) \right| \le \left| f(x) \right| + \left| g(x) \right|
 $$
-## Big-$O$
+## 8.2 Big-$O$
 Let $f, g: \mathbb{R} \rightarrow \mathbb{R}$ (or $f,g: \mathbb{N} \rightarrow \mathbb{R}$) be two functions. We write $f(x) \in O(g(x))$ if there are constants $C, k$ such that 
 $$
 \left| f(x) \right| \le C \left| g(x) \right| \;\;\;\;\; \forall x > k
 $$
 
-## Big-Omega
-### Book Definition
+## 8.3 Big-Omega
+### 8.3.1 Book Definition
 Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is the $\Omega (g(x))$ if there are constants $C$ and $K$ with $C$ positive such that $\left| f(x) \right| \ge C \left| g(x) \right|$ whenever $x > k$
 
-### Class Definition
+### 8.3.2 Class Definition
 Let $f,g:\mathbb{R} \rightarrow \mathbb{R}$ or (or $f,g:\mathbb{N} \rightarrow \mathbb{R}$) be two functions. We write $f(x) \in \Omega (g(x))$ if there are constraints $C > 0, k$ such that
 $$
 \left| f(x) \right| \geq C \left| g(x) \right| \quad \forall x > k.
@@ -177,10 +177,10 @@ We say $f$ is big-Omega of $g$.
 
 $f \in \Omega (g)$ if and only if $g \in O(f)$.
 
-## Big-Theta
-### Book Definition
+## 8.4 Big-Theta
+### 8.4.1 Book Definition
 Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $\Theta (g(x))$ if $f(x)$ is $O(g(x))$ and $f(x)$ is $\Omega (g(x))$. When $f(x)$ is $\Theta (g(x))$, we say that $f$ is big-Theta of $g(x)$, that $f(x)$ is of order $g(x)$, and that $f(x)$ and $g(x)$ are of the *same order*.
-### Class Definition
+### 8.4.2 Class Definition
 Let $f,g: \mathbb{R \rightarrow R}$ (or $f,g: \mathbb{N \rightarrow R}$) be two functions. We write
 $f(x) \in \Theta (g(x))$ if
 $$
@@ -189,5 +189,5 @@ $$
 We say $f$ is big-Theta of $g$ or $f$ and $g$ are of the same order.
 > [!NOTE] IMPORTANT
 > Big-Theta is often used when describing the complexity of algorithms which have the same upper- and lower bound. E.g. A "findMax" algorithm which, no matter the order of the elements in the list, would have to check all of the elements i.e. a time complexity of  $\Theta (n)$. 
-## Tractability
+## 8.5 Tractability
 A problem that is solvable using an algorithm with polynomial (or better) worst-case complexity is called *tractable*. If problems cannot be solved with worst-case polynomial time, they are called *intractable*.
