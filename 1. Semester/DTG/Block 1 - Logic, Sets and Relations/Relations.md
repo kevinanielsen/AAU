@@ -40,7 +40,7 @@ R &= \{(1,1), (2,2), (3,3), (4,4)\}
 \end{aligned}
 $$
 ## 4.2 Symmetric
-A relation is said to be symmetric if $(b,a) \in R$ whenever $(a,b) \in R$, for all $a, b \in A$.
+A relation is said to be symmetric if $(b,a) \in R$ whenever $(a,b) \in R$, for all $a, b \in A$.
 ### 4.2.1 Examples
 $$ 
 \begin{aligned}

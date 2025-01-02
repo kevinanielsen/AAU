@@ -159,7 +159,7 @@ $$
 \left| f(x) + g(x) \right| \le \left| f(x) \right| + \left| g(x) \right|
 $$
 ## 8.2 Big-$O$
-Let $f, g: \mathbb{R} \rightarrow \mathbb{R}$ (or $f,g: \mathbb{N} \rightarrow \mathbb{R}$) be two functions. We write $f(x) \in O(g(x))$ if there are constants $C, k$ such that 
+Let $f, g: \mathbb{R} \rightarrow \mathbb{R}$ (or $f,g: \mathbb{N} \rightarrow \mathbb{R}$) be two functions. We write $f(x) \in O(g(x))$ if there are constants $C, k$ such that 
 $$
 \left| f(x) \right| \le C \left| g(x) \right| \;\;\;\;\; \forall x > k
 $$

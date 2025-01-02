@@ -17,7 +17,7 @@
 
 ### 1.1.1 Compound Propositions 
 Compound propositions are propositions that are combinations of other propositions, using the above-mentioned logical connectives - negation, conjunction, disjunction, exclusive or, implication, and the biconditional operator. The following is an example of a compound proposition.
-$$(p \vee \neg q) \to (p \wedge q)$$ Parentheses carries the highest precedence of all the logical connectives. After that, the order of precedence is the following:
+$$(p \vee \neg q) \to (p \wedge q)$$ Parentheses carries the highest precedence of all the logical connectives. After that, the order of precedence is the following:
 1. $\neg$
 2. $\wedge$ 
 3. $\vee$

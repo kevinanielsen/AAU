@@ -31,7 +31,7 @@ This can be written with a shorthand $\{f(s) \mid s \in S\}$.
 # 1 Inverse functions
 The inverse of a function $f$ is denoted by $f^{-1}$. A function cannot be inverted unless it is bijective. This is because an element in the domain cannot have multiple images. I.e. a singular input must also have a single output. Furthermore, all elements in the domains must have images i.e. all inputs must have an output.
 # 2 Compositions
-Let $g$ be a function from the set $A$ to the set $B$ and let $f$ be a function from the set $B$ to the set $C$. The composition of the functions $f$ and $g$, denoted for all $a \in A$ by $f \circ g$ is the function from $A$ to $C$ defined by
+Let $g$ be a function from the set $A$ to the set $B$ and let $f$ be a function from the set $B$ to the set $C$. The composition of the functions $f$ and $g$, denoted for all $a \in A$ by $f \circ g$ is the function from $A$ to $C$ defined by
 $$(f \circ g)(a) = f(g(a))$$
 ![[91575.png]]
 ## 2.1 Examples
