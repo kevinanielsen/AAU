@@ -36,6 +36,39 @@ $3 \in S.$
 If $x \in S$ and $y \in S$, then $x+y \in S$.
 
 By these steps, we can infer that $3+3=6$ is in the set, thereby also $3+6=9$, $6+6=12$ etc. 
+# Algorithms
+An algorithm is called recursive if it solves a problem by reducing it to an instance of the same problem with smaller input.
+## Proving Recursive Algorithms
+[[Induction#Mathematical Induction|Mathematical induction]], and its variant [[Induction#Strong Induction|strong induction]], can be used to prove that recursive algorithms are correct i.e. that they produce the desired outputs for all possible input values.
+### Examples
+#### Example 1
+Prove that [[Recursion#Algorithm 2 A Recursive Algorithm for Computing $a n$|Algorithm 2]], which computes powers of real numbers, is correct.
+**Basis Step:** If $n=0$, the first step of the algorithm tells us that $power(a,0)=1$. This is correct because $a^0=1$ for every nonzero real number $a$. This completes the basis step.
+**Inductive Step:** The inductive hypothesis is the statement that $power(a,k)=a^k$ for all $a \neq 0$ for an arbitrary nonnegative integer $k$. That is, the inductive hypothesis is the statement that the algorithm correctly computes $a^k$. To complete the inductive step, we show that if the inductive hypothesis is true, then the algorithm correctly computes $a^k+1$. Because $k+1$ is a positive integer, when the algorithm computes $a^k+1$, the algorithm sets $power(a,k+1)= a \cdot power(a,k)$. By the inductive hypothesis we have $power(a,k)=a^k$, so $power(a,k+1)=a \cdot power(a,k)=a \cdot a^k=a^{k+1}$. This completes the inductive step.
+
+## Examples
+### Algorithm 1: A Recursive Algorithm for Computing $n!$
+```ts
+const factorial = (n: number) => {
+	if (n === 0) return 1;
+	else return n * factorial(n-1);
+}
+```
+
+### Algorithm 2: A Recursive Algorithm for Computing $a^n$
+```ts
+const power = (a: number, n: number) => {
+	if (n === 0) return 1;
+	else return a * power(a, n - 1);
+}
+```
+### Algorithm 3: A Recursive Algorithm for Computing $\gcd(a, b)$
+```ts
+const gcd = (a: number, b: number) => {
+	if (a === 0) return b;
+	else return gcd(b % a, a);
+}
+```
 # Definitions
 ## Rooted Trees
 The set of rooted trees, where a rooted tree consists of a set of vertices containing a distinguished vertex called the root, and edges connecting these vertices can be defined recursively by these steps
