@@ -1,8 +1,6 @@
 # 1 Propositional Logic
 > A proposition is a declarative sentence, that is either true or false but not both.
-
 ## 1.1 Propositions
-
 **Valid Proposition Examples**
 1. Washington, D.C., is the capital of the United States of America.
 2. Toronto is the capital of Canada.
@@ -34,7 +32,6 @@ Atomic propositions are propositions that cannot be expressed in simpler terms.
 Negation $\neg$ is the statement that is the opposite of the value of a proposition. Let $p$ be true, then $\neg p$ would be false, since negation is the inverse or "not", therefore negation $p$ could be read as "not $p$".
 #### 1.1.2.3 Conjunction
 A conjunction of two propositions $p$, $q$, denoted by $p \wedge q$, could be read as "$p$ and $q$" and would only be true if both of the propositions are true.
-
 #### 1.1.2.4 Disjunction
 A disjunction of two propositions, $p, q$, denoted by $p \vee q$ could be read as $p$ or $q$ and would be true if either of the propositions are true.
 ![[85726.png]]
