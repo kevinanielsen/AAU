@@ -60,6 +60,88 @@ The sieve of Eratosthenes is used to find all primes not exceeding a specified p
 ![[35391.png]]
 # 3 Greatest Common Divisors
 > Let $a$ and $b$ be integers, not both zero. The largest integer $d$ such that $d \mid a$ and $d \mid b$ is called the *greatest common divisor* of $a$ and $b$. The greatest common divisor of $a$ and $b$ is denoted by $\gcd(a,b)$. 
+
+The greatest common divisor of two integers, not both zero, exists because the set of common divisors of these integers is nonempty and finite. One way to find the greatest common divisor of two integers is to find all the positive common divisors of both integers and then take the largest divisor.
+## 3.1 Relative Prime
+The integers $a$ and $b$ are *relatively prime* if their greatest common divisor is 1.
+
+The integers $a_1, a_2, \ldots, a_n$ are *pairwise relatively prime* if $\gcd(a_i, a_j)=1$ whenever $1 \leq i \leq j \leq n$. 
+### 3.1.1 Examples
+1. The integers 17, 22 are relatively prime as $\gcd(17, 22)=1$
+2. The integers 10, 17 and 21 are *pairwise relatively prime* as $\gcd(10, 17)=1, \gcd(10,21)=1$, and $\gcd(17,21)=1$.
+## 3.2 Least Common Multiple
+The least common multiple of the positive integers $a$ and $b$ is the smallest positive integer that is divisible by both $a$ and $b$. The least least common multiple of $a$ and $b$ is denoted by $\text{lcm}(a,b)$. 
+
+Suppose that the prime factorizations of $a$ and $b$ are as before. Then the least common multiple of $a$ and $b$ is given by
+$$
+\text{lcm}(a,b)=p_1^{max(a_1,b_1)}p_2^{max(a_2,b_2)}\cdots p_n^{max(a_n,b_n)},
+$$
+where $\max(x,y)$ denotes the maximum of the two numbers $x$ and $y$.
+### 3.2.1 Example
+*What is the least common multiple of $2^33^57^2$ and $2^43^3$?***
+We have
+$$
+\text{lcm}(2^23^57^2,2^43^3)=2^{\max(3,4)}3^{\max(5,3)}7^{\max(2,0)}=2^43^57^2
+$$
+Let $a$ and $b$ be positive integers. Then
+$$
+ab = \gcd(a,b) \cdot \text{lcm}(a,b).
+$$
+## 3.3 Examples
+1. ***What is the greatest common divisor of 24 and 36?***
+The positive common divisors of 24 and 36 are 1, 2, 3, 4, 6, 12. Hence $\gcd(24, 36) = 12$.
+## 3.4 The Euclidean Algorithm
+The Euclidean algorithm is an efficient method of finding the greatest common divisor.
+
+Let $a=bq+r$, where $,b,q,$ and $r$ are integers. Then $\gcd(a,b)=\gcd(b,r)$.
+### 3.4.1 Examples
+1. ***Find the greatest common divisor of 91 and 287***
+First, divide 287, the larger of the two integers, by 91, the smaller, to obtain 
+$$
+287=91 \cdot 3+14
+$$
+Any divisor of 91 and 287 must also be a divisor of $287-91 \cdot 3 = 14$. Hence, the greatest common divisor of 91 and 287 is the same as the greatest common divisor of 91 and 14. This means that the problem of finding $\gcd(91, 287)$ has been reduced to finding $\gcd(91,14)$.
+Next, divide 91 by 14 to obtain
+$$
+91=14 \cdot 6 + 7
+$$
+Because any common divisor of 91 and 14 also divides $91-14 \cdot 6 = 7$ and any common divisor of 14 and 7 divides 91, it follows that $\gcd(91,14) = \gcd(14,7)$. Continue by dividing 14 by 7, to obtain
+$$
+14 = 7 \cdot 2.
+$$
+Because 7 divides 14, it follows that $\gcd(14,7)=7$. Furthermore, because $\gcd(287,91)=\gcd(91,14)=\gcd(14,7)=7$, the original problem has been solved.
+## 3.5 gcds as Linear Combinations
+The greatest common divisor of two integers $a$ and $b$ can be expressed in the form
+$$
+sa+tb,
+$$
+where $s$ and $t$ are integers. In other words, $\gcd(a,b)$ can be expressed as a *linear combination* with integer coefficients of $a$ and $b$. For example, $\gcd(6,14)=2$, and $2=(-2) \cdot 6 + 1 \cdot 14$.
+This theorem is called "Bézout's Theorem":
+If $a$ and $b$ are positive integers, then there exists integers $s$ and $t$ such that $\gcd(a,b)=sa+tb$. The integers $s$ and $t$ are called *Bézout coefficients* of $a$ and $b$.
+# Applications of Congruences
+## Hashing Functions
+A hashing function $h$ assigns memory location $h(k)$ to the record that has $k$ as its key.
+One of the most common hashing functions is
+$$
+h(k)=k \bmod m
+$$
+where $m$ is the number of available memory locations.
+Hashing functions should be easily evaluated so that files can be quickly located. The hashing function $h(k)=k \bmod m$ meets this requirement; to find $h(k)$, we need only compute the remainder when $k$ is divided by $m$. Furthermore, the hashing function should be [[Functions#3.3 Onto / Surjection|onto]], so that all memory locations are possible. The function $h(k)=k \bmod m$ also satisfies this property.
+
+Because hashing functions are not [[Functions#3.2 One-to-One Functions / Injection|one-to-one]] (because there are more possible keys than memory locations), more than one file may be assigned to a memory location. We call this a *collision*. 
+### The Linear Probing Function
+To avoid collisions, we can use a *linear probing function*, that looks for the first free memory location if the "spot" is already taken. This function can be described with $h(k,i)=h(k)+i \bmod m$, where $i$ runs from 0 to $m-1$. 
+## Pseudorandom Numbers
+Because numbers generated by systematic methods are not truly random (although they contain properties of randomly chosen numbers), they are called *pseudorandom numbers*.
+### The Linear Congruential Method
+The most common way of generating pseudorandom numbers is the *linear congruential method*. This works by choosing 4 integers: the *modulus* $m$, *multiplier* $a$, *increment* $c$, and *seed* $x_0$, with $2 \leq a < m, 0 \leq c < m$, and $0 \leq x_0 < m$. We generate a sequence of pseudorandom numbers $\{x_n\}$, with $0 \leq x_n < m$ for all $n$, by successively using the [[Recursion#Functions|recursively defined function]]
+$$
+x_{n+1}=(ax_n+c) \bmod m.
+$$
+To generate pseudorandom numbers between 0 and 1, we divide the generated numbers by the modulus: that is, we use the numbers $x_n/m$.
+### Pure Multiplicative Generator
+Most computers use linear congruential generators to generate pseudorandom numbers. Often, a linear congruential generator with  increment $c=0$ is used. Such a generator is called a *pure multiplicative generator*. 
+The pure multiplicative generator with modulus $2^{31}-1$ and multiplier $7^5=16,807$ is widely used. With these values, it can be shown that $2^{31}-2$ numbers are generated before repetition begins.
 # 4 Theorems
 ## 4.1 Theorem 1
 Let $a,b,$ and $c$ be integers, where $a \not = 0$. Then
