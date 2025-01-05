@@ -77,6 +77,11 @@ $$
 \text{lcm}(a,b)=p_1^{max(a_1,b_1)}p_2^{max(a_2,b_2)}\cdots p_n^{max(a_n,b_n)},
 $$
 where $\max(x,y)$ denotes the maximum of the two numbers $x$ and $y$.
+
+Another method for finding the $\text{lcm}(a,b)$ is by dividing $ab$ with $\gcd(a,b)$ i.e.
+$$
+\text{lcm}(a,b)=\dfrac{ab}{\gcd(a,b)}
+$$
 ### 3.2.1 Example
 *What is the least common multiple of $2^33^57^2$ and $2^43^3$?***
 We have
