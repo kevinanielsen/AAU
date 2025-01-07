@@ -13,19 +13,19 @@ This definition is called a *recursive* or *inductive definition*.
 ## Example
 Suppose that $f$ is defined recursively by
 $$
-\begin{aligned}
+\begin{align}
 &f(0)=3, \\
 &f(n+1)=2f(n)+3.
-\end{aligned}
+\end{align}
 $$
 from the recursive definition it follows that 
 $$ 
-\begin{aligned}
+\begin{align}
 &f(1)=2f(0)+3=2 \cdot 3+3=9, \\
 &f(2)=2f(1)+3=2*9+3=21, \\
 &f(3)=2f(2)+3=2*21+3=45, \\
 &f(4)=2f(3)+3=2*45+3=93. \\
-\end{aligned}
+\end{align}
 $$
 # Sets and Structures
 As with functions, recursive definitions of sets have two parts, a *basis step* and a *recursive step*. In the basis step, an initial collection of elements is specified. In the recursive step, rules for forming new elements in the set is provided. Recursive definitions may also include an *exclusion rule*. 

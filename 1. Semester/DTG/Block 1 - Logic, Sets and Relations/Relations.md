@@ -34,46 +34,46 @@ The relation $R = \{(1,1), (1,2), (2,1), (3,2)\}$ on set $A = \{1,2,3\}$ is not 
 A relation is said to be reflexive if $(a,a) \in R$ for every element ${a \in A}$.
 ### 4.1.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{1,2,3,4\} \\
 R &= \{(1,1), (2,2), (3,3), (4,4)\}
-\end{aligned}
+\end{align}
 $$
 ## 4.2 Symmetric
 A relation is said to be symmetric if $(b,a) \in R$ whenever $(a,b) \in R$, for all $a, b \in A$.
 ### 4.2.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{1,2,3,4\} \\
 R &= \{(1,2), (2,1)\}
-\end{aligned}
+\end{align}
 $$
 ## 4.3 Antisymmetric
 A relation is called antisymmetric if for all $a,b \in A$, if $(a,b) \in R$ and $(b,a) \in R$, then $a=b$.
 ### 4.3.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{1,2,3,4\} \\
 R &= \{\{1,2\}, \{3,3\}, \{4,4\}\}
-\end{aligned}
+\end{align}
 $$
 ## 4.4 Transitive
 A relation $R$ is said to be transitive if whenever $(a,b) \in R$ and $(b,c) \in R$, then $(a,c) \in R$ for all $a,b,c \in R$ 
 ### 4.4.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{1,2,3,4\} \\
 R &= \{(1,2), (2,3), (1,3)\}
-\end{aligned}
+\end{align}
 $$
 ## 4.5 Equivalence Relation
 A relation on set $A$ is called an equivalence relation if it is [[Relations#3.1 Reflexive]], [[Relations#3.2 Symmetric]], and [[Relations#3.4 Transitive]]. Two elements, $a$ and $b$, are related by an equivalence relation are said to be equivalent. This would be denoted by $a \sim b$ 
 ### 4.5.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{1,2,3\} \\
 R &= \{(1,1), (2,2), (3,3), (1,2), (2,1)\}
-\end{aligned}
+\end{align}
 $$
 ```mermaid
 graph TD;
@@ -92,10 +92,10 @@ The notation $a \preceq b$ is used to denote that $(a, b) \in R$ in an arbitrary
 poset $(S, R)$
 ### 4.6.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{1,2,3\} \\
 R &= \{(1,1), (2,2), (1,2), (1,3), (2,3)\}
-\end{aligned}
+\end{align}
 $$
 ```mermaid
 graph TD;

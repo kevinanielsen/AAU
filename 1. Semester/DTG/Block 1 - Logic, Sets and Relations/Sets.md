@@ -76,10 +76,10 @@ In other words: If we call the first part of the proposition $p$ and the second,
 The cardinality of a set, or the cardinal number of a set, is the number of distinct elements in a finite set. The cardinality of a set $S$ is denoted by $\left| S \right|$ 
 ### 4.6.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 S &= \{1,2,3\} \\
 \left| S \right| &= 3
-\end{aligned}
+\end{align}
 $$
 ## 4.7 Union
 The union of sets $A$ and $B$ is denoted by $A \cup B$ and it is the set that contains those elements that are either in $A$ or in $B$, or in both. This tells us that
@@ -90,11 +90,11 @@ The union of a collection of sets is the set that contain those elements that ar
 $$A_1 \cup A_2 \cup \cdots \cup A_n=\bigcup_{i=1}^n A_i$$
 ### 4.7.1 Examples
 $$
-\begin{aligned}
+\begin{align}
 A &= \{1,2,3\} \\
 B &= \{3,4,5\} \\
 A \cup B &= \{1,2,3,4,5\}
-\end{aligned}
+\end{align}
 $$
 ## 4.8 Intersection
 The intersection of the sets $A$ and $B$ is denoted by $A \cap B$ and is the set of elements that exist both in set $A$ and $B$. This tells us that 
@@ -105,21 +105,21 @@ The intersection of a collection of sets can be described with the following not
 $$A_1 \cap A_2 \cap \cdots \cap A_n=\bigcap_{i=1}^n A_i$$
 ### 4.8.1 Examples
 $$
-\begin{aligned}
+\begin{align}
 A = \{1, 2, 3\} \\
 B = \{3, 4, 5\} \\
 A \cap B = \{3\}
-\end{aligned}
+\end{align}
 $$
 ## 4.9 Disjoint
 Two sets are called disjoint if their intersection is the empty set.
 ### 4.9.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{1,2,3\} \\
 B &= \{4,5\} \\
 A \cap B &= \{\}
-\end{aligned}
+\end{align}
 $$
 ## 4.10 Difference
 The difference between two sets $A$ and $B$ is denoted by $A - B$ and is the set containing those elements that are in $A$ but not in $B$. The difference of $A$ and $B$ is also called the *complement of $B$ with respect to $A$.* The difference between the sets $A$ and $B$ can also be denoted with $A \setminus B$.
@@ -127,11 +127,11 @@ The difference between two sets $A$ and $B$ is denoted by $A - B$ and is the set
 ![Difference between sets A and B](90271.png)
 ### 4.10.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{1,2,3\} \\
 B &= \{3,4,5\}\\
 A \setminus B &= \{1,2\}
-\end{aligned}
+\end{align}
 $$
 ## 4.11 Complement
 The complement of a set is a set of all the elements that are not in said set. To denote the complement of a set $A$, you would write it like the following.
@@ -147,21 +147,21 @@ A power set is the set of all possible subsets of a set. Given the set $S$, the 
 The cardinality of a power set of $A$ can be found taking 2 to the power of the cardinality of the set $A$.
 ### 4.12.1 Examples
 $$
-\begin{aligned}
+\begin{align}
 S &= \{1, 2, 3\} \\
 \mathcal{P}(S) &= \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}\} \\ \\
 \left| S \right| &= 3 \\
 \left| \mathcal{P}(S) \right| &= 2^\left|S\right| = 2^3 = 8
-\end{aligned}
+\end{align}
 $$
 ## 4.13 Ordered Pair
 An ordered pair $(a,b)$ is a set $\{\{a\}, \{a, b\}\}$
 ### 4.13.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 (1,2) &= \{\{1\}, \{1, 2\}\} \\
 (2,1) &= \{\{2\}, \{2, 1\}\}
-\end{aligned}
+\end{align}
 $$
 ## 4.14 Cartesian Products
 The cartesian product (or *cross product*) of two sets is the set of all ordered pairs $(a,b)$, where $a \in A$ and $b \in B$. Hence, 
@@ -177,7 +177,7 @@ The cartesian product can be found even with more than two sets.
 * **n-tuple:** $A_1 \times A_2 \times \cdots \times A_n = \left\{ (a_1, a_2, \dots, a_n) \mid a_1 \in A_1, a_2 \in A_2, \dots, a_n \in A_n \right\}$
 ### 4.14.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{1,2\} \\
 B &= \{a,b,c\} \\
 A \bigtimes B &= \{\{1, a\}, \{1, b\}, \{1, c\}, \{2,a\}, \{2, b\}, \{2, c\}\} \\
@@ -185,6 +185,6 @@ B \bigtimes A &= \{\{a, 1\}, \{a, 2\}, \{b, 1\}, \{b,2\}, \{c, 1\}, \{c, 2\}\} \
 \left| A \right| &= 2 \\
 \left| B \right| &= 3 \\
 \left| A \bigtimes B \right| &= 6
-\end{aligned}
+\end{align}
 $$
 

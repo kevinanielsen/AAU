@@ -20,10 +20,10 @@ Given a list $L=\{2,1\}$ and the inputs $l=0, r=2-1=1$, the following will happe
 4. MergeSort is triggered once again with $MergeSort(L,1,1)$, once again not triggering the if-statement and returning the list $\{2,1\}$.
 5. The value of $L$ is set to the return of the Merge function, which we assume to return a sorted list containing the elements of two sorted lists given as inputs, therefore returning a sorted list $\{1,2\}$
 $$
-\begin{aligned}
+\begin{align}
 \{2,1\} \rightarrow Merge\{\ MergeSort\{2\}, MergeSort\{1\} \; \} &= MergeSort \{2,1\} \\
 &\rightarrow \{1,2\}
-\end{aligned}
+\end{align}
 $$
 # Exercise 3
 In Ros it is shown that the merging of two sorted lists of lengths $a$ and $b$ can
@@ -47,13 +47,13 @@ The proof is done using standard mathematical induction, starting with a base ca
 2. **Use induction to show that Mergesort uses less or equal to $2n log2 (n)$ comparisons for all $n \geq 2$ using the same assumptions regarding the Merge procedure as before.**
    Hints: A list with $n + 1$ elements is divided into two lists with $\left \lceil \dfrac{n+1}{2} \right \rceil$ and $\left \lfloor \dfrac{n+1}{2} \right \rfloor$ elements respectively by Mergesort. Furthermore the following in-/equalities might be useful:
 $$
-\begin{aligned} 
+\begin{align} 
 & 2 \left\lfloor \frac{n+1}{2} \right\rfloor \log_2\left(\left\lfloor \frac{n+1}{2} \right\rfloor\right) \leq 2 \left\lfloor \frac{n+1}{2} \right\rfloor \log_2\left(\left\lceil \frac{n+1}{2} \right\rceil\right), \\ 
 & \left\lfloor \frac{n+1}{2} \right\rfloor + \left\lceil \frac{n+1}{2} \right\rceil = n+1, \\
 & \left\lceil \frac{n+1}{2} \right\rceil \leq \frac{2}{3}(n+1) \quad \text{for } n \text{ a positive integer}, \\
 & \log_2\left(\frac{2}{3}(n+1)\right) = \log_2(n+1) - \log_2\left(\frac{3}{2}\right), \\
 & n + 1 - 2(n + 1) \log_2\left(\frac{3}{2}\right) < 0 \quad \text{for positive } n.
-\end{aligned}
+\end{align}
 $$
 **Basis Step:** We will use $P(1)$ for our basis step since the theory is set to hold for all $n \geq 2$ i.e. a list of $n=2^1=2 \rightarrow \{1,2\}$.
 The aim is to show that mergesort uses less than or equal to $(2*2)\log_2(2)=4$ comparisons. We may assume that the Merge algorithm uses $a+b-1$ comparisons to combine lists with $a$ and $b$ elements.
