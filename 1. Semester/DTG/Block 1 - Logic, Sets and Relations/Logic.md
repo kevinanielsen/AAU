@@ -76,7 +76,7 @@ A contradiction is a compound proposition that is always false, no matter the tr
 A contingency is a compound proposition that is neither a tautology nor a contradiction.
 
 ![[31871.png]]
-
+![[16941.png]]
 # 2 Predicates and Quantifiers
 Propositional logic is not adequate for expressing all statements in mathematics and in natural language. Therefore we use predicates and quantifiers to express those statements which are not just simply a true or false.
 ## 2.1 Predicates
@@ -93,3 +93,100 @@ The notation $\forall$ is read as "For all" or "For every"
 The existential quantification of $P(x)$ is the proposition "There exists an element x in the domain such that $P(x)$". The notation used for the existential quantification of $P(x)$ is $\exists x P(x)$  and is read as "There is an $x$ such that $P(x)$"
 
 The notation $\exists$ is read as "Exists". 
+# Normal Forms
+Normal forms are standardized ways to represent a logical proposition. 
+## Elementary Conjunctions
+If a [[Logic#1.1.2.3 Conjunction|conjunction]] only contains variables or their negations, we refer to it as elementary.  $p\wedge q$ or $\neg q \wedge r \wedge \neg s \wedge t$ are examples of elementary conjunctions while $(p \rightarrow q) \wedge s$ is not.
+
+If an elementary conjunction contains both a variable and its negation then it is a contradiction. I.e. a conjunction of the form $p \wedge \neg p \wedge \cdots$ is equivalent to $\mathbb{F} \wedge \cdots$ which is always false and hence equivalent to $\mathbb{F}$. 
+## Elementary Disjunctions
+Analogously, we say that a disjunction is elementary if it only contains variables or their negation. The propositions $p \vee q$ and $p \vee \neg q \vee s$ are hence elementary disjunctions. 
+
+Contrary to conjunctions we see that if an elementary disjunction contains both a variable and its negation, then it is a [[Logic#1.2.3.1 Tautology|tautology]]. Given $p \vee \neg p \vee \cdots$ we see that it is equivalent to $\mathbb{T} \vee \cdots$ which is always true and hence equivalent to $\mathbb{T}$.
+## Disjunctive Normal Form
+> A proposition is said to be in disjunctive normal form, if it consists of the disjunction of elementary conjunctions.
+
+Examples of propositions in DNF are $(p \wedge q) \vee  \neg p \vee (p \wedge \neg r) \vee (\neg q \wedge r)$ and $(q \wedge r) \vee (p \wedge \neg p )$. Note that the second proposition contains the elementary conjunction $(p \wedge \neg p)$ which is a contradiction and can therefore be removed from the disjunction. We can reduce the example to $q \wedge r$. 
+
+Every proposition can be rewritten into DNF by using the equivalences $p \rightarrow q \equiv \neg p \vee q$, [[Logic#1.2.2 De Morgan Laws|De Morgan's Laws]], and distributivity.
+### Examples
+1. Rewrite $(\neg p \rightarrow q) \wedge q$ into DNF.
+$$ 
+\begin{align}
+&(q \vee \neg(\neg p)) \wedge q &(\text{Equivalence for} \rightarrow) \\
+&(q \vee p) \wedge q \\
+&(q \wedge q) \vee (p \wedge q) &(\text{Distributive Law})
+\end{align}
+$$
+The expression is now in DNF
+## Conjunctive Normal Form
+> A proposition is said to be in conjunctive normal form, if it consists of conjunctions of elementary disjunctions.
+
+Examples of CNF are $p \wedge(q \vee \neg s), (\neg q \vee \neg s) \wedge (p \vee s) \wedge q$ and $(p \vee s) \wedge (q \vee \neg q)$.
+
+### Examples
+1. Rewrite $(\neg p \rightarrow q) \wedge q$ into CNF
+$$ 
+\begin{align}
+&(q \vee \neg (\neg p)) \wedge q &(\text{Equivalence for} \rightarrow) \\
+&(q \vee p) \wedge q
+\end{align}
+$$
+This expression is now in CNF
+## Minterm
+A minterm of $n$ variables is a conjunction, that for each variable either contains it or its negation, but not both. This means that all possible minterms for $p$ or $q$ are
+$$ 
+\begin{align}
+&p \wedge q &&p \wedge \neg q &&\neg p \wedge q &&\neg p \wedge \neg q,
+\end{align}
+$$
+since we consider $p \wedge q$ and $q \wedge p$ the same. A minterm is only true for exactly one set of truth values for the involved variables.
+## Maxterm
+If we remove all conjunctions in a minterm with disjunctions we get what is called a maxterm. Hence the maxterms for two variables $p$ and $q$ are
+$$ 
+\begin{align}
+&p \vee q &&p \vee \neg q && \neg p \vee q && \neg p \vee \neg q.
+\end{align}
+$$
+## Principal Disjunctive Normal Form
+> A proposition is said to be in PDNF, if it is the disjunction of minterms.
+
+### Examples
+1. Truth table for the proposition $p \rightarrow q$ is given by
+
+| $p$ | $q$ | $p \rightarrow q$ |
+| --- | --- | ----------------- |
+| T   | T   | T                 |
+| T   | F   | F                 |
+| F   | T   | T                 |
+| F   | F   | T                 |
+Consider each row in which the proposition is true. The proposition is true, exactly of $p \wedge q, \neg p \wedge q$ or $\neg p \wedge \neg q$ is true. This corresponds to the proposition
+$$
+(p \wedge q) \vee (\neg p \wedge q) \vee (\neg p \wedge \neg q)
+$$
+Which is in PDNF.
+
+The process is the same as with the [[Logic#Disjunctive Normal Form|DNF]], except that we remove conjunctions that represent contradictions, and add variables to those elementary conjunctions that are not minterms. Furthermore we remove duplicates among the minterms.
+2. Rewrite the DNF $(q \wedge q) \vee (p \wedge q)$ as a PDNF
+$$ 
+\begin{align}
+&(\mathbb{T} \wedge q) \vee (p \wedge q) &(\text{Identity Law}) \\
+&((p \vee \neg p)\wedge q)\vee(p \wedge q) \\
+&((p \wedge q)\vee(\neg p \wedge q) \vee (p \wedge q)) &(\text{Distributive Law}) \\
+&(p \wedge q) \vee (\neg p \wedge q) &(\text{Remove duplicate terms})
+\end{align}
+$$
+The proposition is now in PDNF.
+## Principal Conjunctive Normal Form
+> A proposition is said to be in PCNF, if it is the conjunction of maxterms
+### Examples
+1. Rewrite the proposition $(q \vee p) \wedge q$ as a PCNF.
+$$ 
+\begin{align}
+&(q \vee p) \wedge (q \vee \mathbb{F}) &(\text{Identity Law}) \\
+&(q \vee p) \wedge (q \vee (p \wedge \neg p)) \\
+&(q \vee p) \wedge (q \vee p) \wedge (q \vee \neg p) &(\text{Distributive Law}) \\
+&(q \vee p) \wedge (q \vee \neg p) &(\text{Remove duplicate terms})
+\end{align}
+$$
+2. The proposition $(\neg p \vee \neg q) \wedge (q \vee \neg p)$ is already in PCNF.
