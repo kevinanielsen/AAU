@@ -23,10 +23,10 @@ The witness $k$ is the threshold for $x$ (or $n$), for which the complexity hold
 Let $b>1$ then $n \le b^n \Rightarrow log_b(n) \le n$
 $log_b(n) \in O(n), C=1, k=0$, because
 $$ 
-\begin{aligned}
+\begin{align}
 log_b(b^n) &= \\
 n*log_b(b) &= n
-\end{aligned}
+\end{align}
 $$
 2. 
 $n!=1*2 \cdots n \le n^n$
@@ -34,11 +34,11 @@ $n! \in O(n^n), C=1, k=1$
 3. 
 Let $b>1$ then
 $$ 
-\begin{aligned}
+\begin{align}
 log_b(n!) &= log_b(1 * 2 \cdots n) \\
 &= log_b(1)+log_b(2) + \cdots log_b(n) \\
 &\le n*log_b(n)
-\end{aligned}
+\end{align}
 $$
 $log_b(n!) \in O(n*log_b(n)), C = 1, k = 1$
 
@@ -46,32 +46,32 @@ $log_b(n!) \in O(n*log_b(n)), C = 1, k = 1$
 # 2 Sums of Functions
 Let $f_1 \in O(g_1)$ and $f_2 \in O(g_2)$, with witnesses $C_1, k_1$ and $C_2, k_2$. This means
 $$ 
-\begin{aligned}
+\begin{align}
 \left| f_1(x) \right| \le C_1 \left| g_1(x) \right| \;\;\;\; \text{for } x > k_1, \\
 \left| f_2(x) \right| \le C_2 \left| g_2(x) \right| \;\;\;\; \text{for } x > k_2.
-\end{aligned}
+\end{align}
 $$
 Then we have
 $$
-\begin{aligned}
+\begin{align}
     \left|f_1(x) + f_2(x)\right| &\leq \left|f_1(x)\right| + \left|f_2(x)\right| \\
     &\leq C_1 \left|g_1(x)\right| + C_2 \left|g_2(x)\right| \\
     &\leq C_1 \left|g(x)\right| + C_2 \left|g(x)\right| \quad \text{when } x > \max\{k_1, k_2\} \\
     &= (C_1 + C_2) g(x) \quad \text{where } g(x) = \max\{g_1(x), g_2(x)\}
-\end{aligned}
+\end{align}
 $$
 Hence $(f_1+f_2)(x) \in O(g(x))$.
 
 ## 2.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 f_1(x) &= 3x^2 + x + 9 \\
 f_2(x) &= 4x^3 + 2x^2 + 3x \\
 f_1(x)+f_2(x) &= (3x^2+x+9)+(4x^3+2x^2+3x) \\
 &= 3x^2+x+9+4x^3+2x^2+3x \\
 &= 4x^3+6x^2+4x+9 \\\\
 (f_1+f_2)(x) &\in O(x^3)
-\end{aligned}
+\end{align}
 $$
 This holds because the highest power of $x$ in the sum of the functions is 3. 
 >[!NOTE] Theorem 2
@@ -79,30 +79,30 @@ This holds because the highest power of $x$ in the sum of the functions is 3.
 # 3 Product of Functions
 Let $f_1 \in O(g_1)$ and $f_2 \in O(g_2)$, with witnesses $C_1, k_1$ and $C_2, k_2$. This means
 $$
-\begin{aligned}
+\begin{align}
 \left| f_1(x) \right| \leq C_1 \left| g_1(x) \right| \quad \text{for } x > k_1, \\
 \left| f_2(x) \right| \leq C_2 \left| g_1(x) \right| \quad \text{for } x > k_2.
-\end{aligned}
+\end{align}
 $$
 Then we have
 $$ 
-\begin{aligned}
+\begin{align}
 \left| f_1(x)f_2(x) \right| &= \left| f_1(x) \right| \left| f_2(x) \right| \\
 &\leq C_1 \left| g_1(x) \right|C_2 \left| g_2(x) \right| \quad \text{when } x > \max\{k_1, k_2\} \\
 &= C_1 C_2 \left| g_1(x) g_2(x) \right|
-\end{aligned}
+\end{align}
 $$
 Hence $(f_1 f_2)(x) \in O((g_1 g_2)(x))$.
 ## 3.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 f_1(x) &= 3x^2 + x + 9 \\
 f_2(x) &= 4x^3 + 2x^2 + 3x \\
 f_1(x)f_2(x) &= (3x^2+x+9)(4x^3+2x^2+3x) \\
 &= 12x^5+6x^4+9x^3+4x^4+2x^3+3x^2+36x^3+18x^2+27x \\
 &= 12x^5+10x^4+47x^3+21x^2+27x \\\\
 (f_1 f_2)(x) &\in O(x^5)
-\end{aligned}
+\end{align}
 $$
 This holds since the highest power of $x$ is 5 in the product of the two functions.
 

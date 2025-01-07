@@ -8,21 +8,21 @@ We say that two functions are equal when they have the same domain, have the sam
 
 Let $f_1$ and $f_2$ be functions from $A$ to $\mathbf{R}$. Then $f_1 + f_2$ and $f_1 f_2$ are also functions from $A$ to $\mathbf{R}$ defined for all $x \in A$ by
 $$
-\begin{aligned}
+\begin{align}
 (f_1 + f_2)(x) &= f_1(x) + f_2(x), \\ 
 (f_1 f_2)(x) &= f_1(x)f_2(x)
-\end{aligned}
+\end{align}
 $$
 ## 0.1 Example
 $$ 
-\begin{aligned}
+\begin{align}
 f_1 &= x^2 \\
 f_2 &= x - x^2 \\\\
 f_1 + f_2 &= \\ 
 (f_1+f_2)(x) &= \\ 
 f_1(x)+f_2(x) &= x^2 + (x - x^2) = x \\\\
 (f_1 f_2)(x) &= x^2(x-x^2) = x^3 - x^4
-\end{aligned}
+\end{align}
 $$
 
 Let $f$ be a function from $A$ to $B$ and let $S$ be a subset of $A$. The image of $S$ under the function $f$ is the subset of $B$ that consists of the images of elements of $S$. We denote the image of $S$ by $f(S)$, so 
@@ -36,7 +36,7 @@ $$(f \circ g)(a) = f(g(a))$$
 ![[91575.png]]
 ## 2.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 f(x) &= 2x + 3 \\
 g(x) &= 3x + 2 \\\\
 (f \circ g)(x) &= \\
@@ -45,7 +45,7 @@ f(3x+2) &= 2(3x + 2) + 3 = 6x+7 \\\\
 (g \circ f)(x) &= \\
 g(f(x)) &= \\
 g(2x+3) &= 3(2x + 3) + 2 = 6x + 11
-\end{aligned}
+\end{align}
 $$
 # 3 Definitions
 ### 3.1.1 Codomain and Domain
@@ -54,7 +54,7 @@ If $f$ is a function from $A$ to $B$, we say that $A$ is the *domain* of $f$ and
 If $f(a)=b$, we say $b$ is the *image* of $a$ and $a$ is the *preimage* of $b$. The *range*, or *image*, of $f$ is the set of all images of elements of $A$. Also, if $f$ is a function from $A$ to $B$, we say that $f$ *maps* $A$ to $B$.
 ### 3.1.3 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 A &= \{a,b,c,d,e\} \\
 B &= \{1,2,3,4\} \\
 f(a) &= 2 \\
@@ -62,7 +62,7 @@ f(b) &= 1 \\
 f(c) &= 4 \\
 f(d) &= 1 \\
 f(e) &= 1 \\
-\end{aligned}
+\end{align}
 $$
 The image of the subset $S=\{b,c,d\}$ is the set $f(S)=\{1,4\}$
 ## 3.2 One-to-One Functions / Injection
@@ -92,21 +92,21 @@ Let $f$ be a function from the set $A$ to the set $B$. The graph of the function
 The floor function, denoted by $\lfloor x \rfloor$, assigns to the real number $x$ the largest integer that is less than or equal to $x$. 
 ### 3.7.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 \lfloor 3.8 \rfloor &= 3 \\
 \lfloor 9.3 \rfloor &= 9 \\
 \lfloor 4 \rfloor &= 4
-\end{aligned}
+\end{align}
 $$
 ## 3.8 Ceiling
 The ceiling function, denoted by $\lceil x \rceil$, assigns to the real number $x$ the smallest integer that is greater than or equal to $x$.
 ### 3.8.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 \lceil 3.8 \rceil &= 4 \\
 \lceil 9.3 \rceil &= 10 \\
 \lceil 4 \rceil &= 4
-\end{aligned}
+\end{align}
 $$
 ## 3.9 Partial Functions
 Partial functions are functions where some inputs results in undefined outputs. E.g. the "youngest child" function, which would be undefined for couples having no children.

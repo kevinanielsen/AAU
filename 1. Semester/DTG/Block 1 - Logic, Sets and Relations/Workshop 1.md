@@ -32,20 +32,20 @@ $$S^* = S \cup \{(Bob, Noa), (Bob, Tom), (Ida, Liv), (Ida, Tom)\}$$
 # Exercise 3
 1. Consider the following sets
 $$ 
-\begin{aligned}
+\begin{align}
 F_{Tom} &= {a \in A \mid (a, Tom) \in S^*} \\
 
 F_{Noa} &= {a \in A \mid (a, Noa) \in S^*}
-\end{aligned}
+\end{align}
 $$
    What do these sets describe? Which elements are in the sets $F_{Tom}$, $F_{Noa}$ and $F_{Tom} \cap F_{Noa}$.
 The set $F_{Tom}$ describes all the users who follow Tom e.g. has a relation to Tom. The set $F_{Noa}$ describes all users who follow Noa. Lastly, the set $F_{Tom} \cap F_{Noa}$ describes the users who follow both Tom and Noa.
 $$ 
-\begin{aligned}
+\begin{align}
 F_{Tom} &= \{Ida, Gus, Tom, Noa, Liv, Bob\} \\
 F_{Noa} &= \{Bob, Liv, Noa\} \\
 F_{Tom} \cap F_{Noa} &= \{Noa, Liv, Bob\}
-\end{aligned}
+\end{align}
 $$
 
 2. Let $B \subseteq A$ and consider $G_{Tom} = \{b \in B \mid (b,Tom) \in S^*\}$. Show that $G_{Tom} \subseteq F_{Tom}$.

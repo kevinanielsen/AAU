@@ -1,9 +1,9 @@
 A search function takes as inputs a list $(a_0, \ldots, a_{n−1})$ and an element $x$. The task is to find the element $x$ in the list if it is a member. More precisely, if there is an index $i$ such that $a_i = x$ then a search algorithm should return the index $i$. If there is no such index we want a return value of $−1$. We will restrict ourselves to lists of integers. If we denote by $A$ the set of all finite lists of integers then a search function is a map 
 $$ 
-\begin{aligned}
+\begin{align}
 f: A \times \mathbb{Z} &\rightarrow \mathbb{Z}_{\geq-1} \\
 f((a_0, \ldots, a_{n-1}),x) &= \begin{cases} i & \text{if } a_i = x \\ -1 & \text{otherwise.} \end{cases}
-\end{aligned}
+\end{align}
 $$
 # Exercise 1
 ## a) Explain why $f$ is not a function using the list $(3, 4, 4, 5)$ as an example.
@@ -30,11 +30,11 @@ The while loop does exactly two comparisons each iteration:
 2. Checking if $x>a_m$
 ### ii) Show that in the first iteration of the while loop $m = 2^{k−1}−1$.
 $$ 
-\begin{aligned}
+\begin{align}
 i &= 0 \\
 j &= 2^k-1 \\
 m &= \lfloor \frac{0+(2^k-1)}{2} \rfloor = \frac{2^k-1}{2} = 2^{k-1}-1
-\end{aligned}
+\end{align}
 $$
 ### iii) Argue that after the first time the while loop has run we have excluded half the elements of the list.
 We use the $m$ variable to get the median value (lower-middle value if $n$ is even) of the list. Each iteration of the while loop, we check if $x>a_m$ i.e. if the search value is higher than the middle value, if so, we set $i = m + 1$, else we set $j = m$ $i, j$ being the values we use to find the middle-most value. Thereby, we exclude half of the values in the list every iteration.
@@ -61,19 +61,19 @@ As previously discussed, we use the witnesses $C,k$ when discussing complexity. 
 Linear search requires $\Theta(n)$ comparisons for each search If $m$ elements are searched, then the total number of comparisons is $m*\Theta(n) = \Theta(mn)$. 
 ### ii) We will see that a list of $n$ elements can be sorted with an eﬀort of $\Theta(n log_2(n))$. How many operations are needed if we sort the list first, then search for $m$ elements using binary search?
 For this question, the theory of the sum of functions will be used.
-We know that binary search has a complexity of $\Theta(log_2(n))$ and sorting the list has a complexity of $\Theta (nlog_2(n))$. Therefore sorting the list first will use $\begin{aligned} log_2(n)+nlog_2(n) \end{aligned}$ operations. 
+We know that binary search has a complexity of $\Theta(log_2(n))$ and sorting the list has a complexity of $\Theta (nlog_2(n))$. Therefore sorting the list first will use $log_2(n)+nlog_2(n)$ operations. 
 ### iii) At which point, i.e., for which $m$, do these two approaches have similar complexity? Which one is better when?
 Figuring out at which point the two approaches have similar complexity can be done by using the method for finding the intersections of two functions, because as we know, the value for big-theta is a function. 
 Linear search: $mn$
 Binary search + sorting: $(mlog_2(n))+nlog_2(n)$
 Intersection:
 $$ 
-\begin{aligned}
+\begin{align}
 mn &= mlog_2(n)+nlog_2(n) \\
 mn - mlog_2(n)&=nlog_2(n) \\
 m(n-log_2(n)) &=nlog2(n) \\\\
 m &= \dfrac{nlog2(n)}{n-log2(n)}
-\end{aligned}
+\end{align}
 $$
 This means that 
 $$

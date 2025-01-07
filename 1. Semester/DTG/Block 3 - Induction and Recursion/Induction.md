@@ -41,11 +41,11 @@ $$
 $$
 #### Basis step:
 $$ 
-\begin{aligned}
+\begin{align}
 P(1) &\Rightarrow \\
 1 &= \dfrac{1(1+1)}{2} \\
 1 &= 2/2 = 1
-\end{aligned}
+\end{align}
 $$
 #### Inductive step
 For the inductive hypothesis we assume that $P(k)$ holds for an arbitrary positive integer $k$. That is, we assume that 
@@ -59,12 +59,12 @@ $$
 We observe that the summation in the left-hand side of $P(k+1)$ is $k+1$ more than the summation in the left-hand side of $P(k)$. Our strategy will be to add $k+1$ to both sides of the equation in $P(k)$ and simplify the results algebraically to complete the inductive step.
 We now return to the proof of the inductive step. When we add $k+1$ to both sides of the equation in $P(k)$, we obtain
 $$ 
-\begin{aligned}
+\begin{align}
 1+2+\cdots+k+(k+1) &= \dfrac{k(k+1)}{2}+(k+1) \\
 &= \dfrac{k(k+1)+2(k+1)}{2} \\
 &= \dfrac{k(k+1)+2(k+1)}{2} \\
 &= \dfrac{(k+1)(k+2)}{2}
-\end{aligned}
+\end{align}
 $$
 This last equation shows that $P(k+1)$ is true under the assumption is that $P(k)$ is true. This completes the inductive step.
 ### Example 2
@@ -79,12 +79,12 @@ $$
 $$
 Assuming the inductive hypothesis $P(k)$, we see that
 $$
-\begin{aligned}
+\begin{align}
 1+2+2^2+\cdots+2^k+2^{k+1}&=(1+2+2^2+\cdots+2^k)+2^{k+1} \\
 &=(2^{k+1}-1)+2^{k+1} \\
 &= 2\cdot2^{k+1}-1 \\
 &= 2^{k+2}-1
-\end{aligned}
+\end{align}
 $$
 ### Example 3
 Prove the inequality $n<2^n$ for all positive integers $n$.
@@ -98,10 +98,10 @@ k+1 < 2^{k+1}.
 $$
 Assuming the inductive hypothesis $P(k)$, we see that 
 $$ 
-\begin{aligned}
+\begin{align}
 k+1 &<2^k+1 \leq 2^k+2^k =2 \cdot 2^k = 2^{k+1} \\
 
-\end{aligned}
+\end{align}
 $$
 ### Example 4
 Prove that $2^n<n!$ for every integer $n$ with $n \geq 4$.
@@ -115,12 +115,12 @@ $$
 $$
 Assuming the inductive hypothesis $P(k)$, we see that 
 $$ 
-\begin{aligned}
+\begin{align}
 2^{k+1} &= 2 \cdot 2^k \\
 &< 2 \cdot k! \\
 &< (k+1)k! \\
 &= (k+1)!
-\end{aligned}
+\end{align}
 $$
 ### Example 5
 Use mathematical induction to prove that $n^3-n$ is divisible by 3 whenever $n$ is a positive integer.
@@ -129,11 +129,11 @@ Use mathematical induction to prove that $n^3-n$ is divisible by 3 whenever $n$ 
 #### Inductive Step
 Assume that $P(k)$ is true for an arbitrary $k$. That is, we assume that $k^3-k$ is divisible by 3. Assuming that our inductive hypothesis is true, we need to prove that $P(k+1)$ is true i.e. $(k+1)^3-(k+1)$ should be divisible by 3.
 $$ 
-\begin{aligned}
+\begin{align}
 (k+1)^3-(k+1) &= (k^2+k+1)(k+1)-(k+1) \\
 &= (k^3+3k^2+3k+1) -(k+1) \\
 &= (k^3-k)+3(k^2+k)
-\end{aligned}
+\end{align}
 $$
 Using the inductive hypothesis, we conclude that the first term $k^3-k$ is divisible by 3. The second term is divisible by 3 because it is 3 times an integer.
 ### Example 6
@@ -144,12 +144,12 @@ $\dfrac{57}{57}=1$, therefore our basis step holds.
 #### Inductive Step
 Assume that $P(k)$ is true for an arbitrary $k$. That is, we assume that $7^{k+2}+8^{2k+1}$ holds. Now, we need to prove that $P(k+1)$ is true i.e. $7^{(k+1)+2}+8^{2(k+1)+1}$ is divisible by 57.
 $$
-\begin{aligned}
+\begin{align}
 7^{(k+1)+2}+8^{2(k+1)+1} &= 7^{k+3}+8^{2k+3} \\
 &= 7 \cdot 7^{k+2}+8^2 \cdot 8^{2k+1} \\
 &= 7 \cdot 7^{k+2}+64 \cdot 8^{2k+1} \\
 &= 7(7^{k+2}+8^{2k+1})+57 \cdot 8^{2k+1}
-\end{aligned}
+\end{align}
 $$
 This holds because as we know, $7^{k+2}+8^{2k+1}$ is divisible with 57, therefore, 7 times that equation, will also be divisible with 57. Furthermore, the second part of the result is 57 times 8 to the power of $2k+1$, therefore it is also divisible with 57.
 ### Example 8
@@ -167,17 +167,17 @@ Our inductive hypothesis says that $P(k)=1^2+2^2+3^2+\cdots+(2k^2) = \dfrac{k(2k
 #### Inductive Step
 We assume that our inductive hypothesis $P(k)$ holds true for an arbitrary $k$. We now need to prove that $P(k+1)$ i.e. 
 $$ 
-\begin{aligned}
+\begin{align}
 1^2+2^2+3^2+\cdots+(2(k+1)^2) &= \dfrac{(k+1)(2(k+1)+1)(4(k+1)+1)}{3} \\
 &= \dfrac{(k+1)(2k+2+1)(4k+4+1)}{3} \\
 &= \dfrac{(2k^2+5k+3)(4k+4+1)}{3} \\
 &= \dfrac{8k^3+8k^2+2k^2+20k^2+20k+5k+12k+12+3}{3} \\
 &= \dfrac{8k^3+30k^2+37k+15}{3}
-\end{aligned}
+\end{align}
 $$
 holds true.
 $$ 
-\begin{aligned}
+\begin{align}
 &1^2+2^2+3^2+\cdots+(2k^2)+((2k+1)^2)+(2(k+1)^2) \\
 &= \dfrac{k(2k+1)(4k+1)}{3} + (2k+1)^2+(2(k+1))^2 \\
 &= \dfrac{k(2k+1)(4k+1) + 3((2k+1)^2+(2(k+1))^2)}{3} \\
@@ -185,7 +185,7 @@ $$
 &= \dfrac{8k^3+6k^2+k + 3(8k^2+12k+5)}{3} \\
 &= \dfrac{8k^3+6k^2+k + 24k^2+36k+15}{3} \\
 &= \dfrac{8k^3+30k^2+37k+15}{3}
-\end{aligned}
+\end{align}
 $$
 We started off by taking our inductive hypothesis and adding $((2k+1)^2)+(2(k+1)^2$ to it on both sides of the equation. We did this because 
 $$

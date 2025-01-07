@@ -38,12 +38,12 @@ where the multiplication on the right-hand side of this equation is the ordinary
 Every integer greater than 1 can be written uniquely as a prime or as the product of two or more primes, where the prime factors are written in order of nondecreasing size.
 ### 2.1.1 Examples
 $$ 
-\begin{aligned}
+\begin{align}
 100 &= 2 \cdot 2 \cdot 5 \cdot 5=2^25^2, \\
 641 &= 641, \\
 999 &= 3 \cdot 3 \cdot 3 \cdot 37=3^3 \cdot 37, \\
 1024 &= 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 2^{10}
-\end{aligned}
+\end{align}
 $$
 ## 2.2 Trial Division
 To show that a given integer is prime, you can use *trial division*. One procedure is using the following theorem:
@@ -151,11 +151,11 @@ The pure multiplicative generator with modulus $2^{31}-1$ and multiplier $7^5=16
 ## 4.1 Theorem 1
 Let $a,b,$ and $c$ be integers, where $a \not = 0$. Then
 $$
-\begin{aligned}
+\begin{align}
 (i) &\quad \text{if } a \mid b \text{ and } a \mid c, \text{ then } a \mid (b+c); \\
 (ii) &\quad \text{if } a \mid b \text{ and } a \mid bc \text{ for all integers c}; \\
 (iii) &\quad \text{if } a \mid b \text{ and } b \mid c, \text{ then } a \mid c. \\
-\end{aligned}
+\end{align}
 $$
 ## 4.2 Theorem 2: The Division Algorithm
 Let $a$ be an integer and $d$ a positive integer. Then there are unique integers $q$ and $r$, with $0\leq r \leq d$, such that $a=dq+r$. 
