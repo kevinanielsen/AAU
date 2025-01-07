@@ -1,0 +1,115 @@
+In this workshop we will analyse some conditions for an IF statement. In the
+accompanying file you can see the code and the IF statement in question.
+We are looking for a big natural number x, that fulfills certain condi-
+tions. To describe these conditions we introduce the following propositional
+functions:
+$$ 
+\begin{align}
+P (x) &: \text{x is a prime} \\
+Q(x) &: \gcd(x, 2) = 1 \\
+R(x) &: 9^x−2 \bmod 5 = 2
+\end{align}
+$$
+
+We are looking for numbers x for which the following proposition is true:
+$$ 
+\begin{align}
+(P (x) \wedge \neg R(x)) \vee \neg(P (x) \vee \neg Q(x) \vee R(x)) \vee (\neg P(x) \wedge \neg Q(x) \wedge R(x)). \\
+&(1)
+\end{align}
+$$
+
+For now we only know that 2 fulfills this condition. Since $P (2)$ is true, 2 is a
+prime, and $Q(2)$ is false, since $\gcd(2, 2) = 2 \neq 1$, and $R(2)$ is false, because
+$9^2-2 \bmod 5=79 \bmod 5=4$. Hence we get
+$$ 
+\begin{align}
+&\quad (P(2) \wedge \neg R(2)) \vee \neg (P(2) \vee Q(2) \vee R(2)) \vee (\neg P(2) \wedge \neg Q(2) \wedge R(2)) \\
+&\equiv (\mathbb{T} \wedge \neg \mathbb{F}) \vee \neg(\mathbb{T} \vee \neg \mathbb{F} \vee \mathbb{F}) \vee (\neg \mathbb{T} \wedge \neg \mathbb{F} \wedge \mathbb{F}) \\
+&\equiv (\mathbb{T} \wedge \mathbb{T}) \vee \neg(\mathbb{T} \vee \mathbb{T} \vee \mathbb{F}) \vee (\mathbb{F} \wedge \mathbb{T} \wedge \mathbb{F}) \\
+&\equiv \mathbb{T} \vee \neg \mathbb{T} \vee \mathbb{F} \\
+&\equiv \mathbb{T} \\
+\end{align}
+$$
+
+Assume we are interested in finding large numbers for which the condition is true. More precisely we would like to find three numbers $\{x, y, z\}$, where $100000 < x, y, z \leq 1000000$ that all fulfill the given condition.
+# Exercise 1
+1. How many ways can we choose $\{x, y, z\}$, where $100.000 < x, y, z \leq 1.000.000$
+
+a) if we do not require them to be necessarily all different?
+
+For each of the spots $x,y,z$, we will have $1.000.000-100.000=900.000$ different possibilities, therefore the number of different ways to choose the numbers would be $900000^3$
+
+b) if we want them to be pairwise diffrent?
+Because $x,y,z$ are distinct and labeled, the order matters. This means that this is a permutation problem i.e. we want to find $P(900000, 3)$ which can be done with the formula 
+$$
+P(n,r)=\dfrac{n!}{(n-r)!}
+$$
+Which leads us to 
+$$
+P(900000,3)=\dfrac{900000!}{(900000-3)!}=\dfrac{900000!}{899997!}=900000 \cdot 899999 \cdot 899998
+$$
+1. ~~Complete the accompanying code by adding the functions isPrime, is2mod5 and isGcd1 so they check the corresponding condition. (Hint for isGcd1: The function does not need to compute the gcd, but can simply check possible divisors. Hint for is2mod5: Find a way to apply the modulus throughout the calculations. Otherwise you will get much too big numbers very quickly when calculating 9x.)~~
+2. ~~Try (ten) different values of x and see if you can find one that fulfills all conditions. Can you find one that makes (1) true?~~
+# Exercise 2
+1. Rewrite the condition in (1) into PDNF.
+
+A proposition in PDNF (Principal Disjunctive Normal Form) is the disjunction of [[Logic#Minterm|minterms]]. 
+
+The first part of the proposition, $P(x) \wedge \neg R(x)$, is missing the use of $Q(x)$ for it to be a minterm. The last part $(\neg P(x) \wedge \neg Q(x) \wedge R(x))$ is already a minterm. This means that we just need to rewrite the first and second part of the proposition into minterms. 
+
+Using De Morgan's second law $\neg(p \vee q) \equiv \neg p \wedge \neg q$, we will rewrite the second part of the proposition.
+$$
+\begin{align}
+&\quad \neg(P (x) \vee \neg Q(x) \vee R(x)) \\[0.1cm]
+&\equiv \neg P(x) \wedge \neg (\neg Q(x)) \wedge \neg R(x) \\[0.1cm]
+&\equiv \neg P(x) \wedge Q(x) \wedge \neg R(x)
+\end{align}
+$$
+
+Using the distributive law $p \wedge (q \vee r) \equiv (p \wedge q) \vee (p \wedge r)$ and the tautology $(Q(x) \vee \neg Q(x))$, we will add $Q(r)$ to the first part to complete the minterm, and make the proposition into proper PDNF.
+$$ 
+\begin{align}
+&\quad P(x) \wedge \neg R(x) \\[0.1cm]
+&\equiv P(x) \wedge \neg R(x) \wedge (Q(x) \vee \neg Q(x)) \\[0.1cm]
+&\equiv (P(x) \wedge \neg R(x) \wedge Q(x)) \vee (P(x) \wedge \neg R(x) \wedge \neg Q)
+\end{align}
+$$
+Now, lets put together the whole proposition:
+$$ 
+\begin{align}
+&\quad (P (x) \wedge \neg R(x)) \vee \neg(P (x) \vee \neg Q(x) \vee R(x)) \vee (\neg P(x) \wedge \neg Q(x) \wedge R(x)). &(1) \\[0.1cm]
+&\equiv (P(x) \wedge \neg R(x)) \vee (\neg P(x) \wedge Q(x) \wedge \neg R(x)) \vee (\neg P(x) \wedge \neg Q(x) \wedge R(x)) \\[0.1cm]
+&\equiv (P(x) \wedge \neg R(x) \wedge Q(x)) \vee (P(x) \wedge \neg R(x) \wedge \neg Q) \vee (\neg P(x) \wedge Q(x) \wedge \neg R(x)) \vee (\neg P(x) \wedge \neg Q(x) \wedge R(x))
+\end{align}
+$$
+2. How many minterms does the normalform contain? What does this mean for the corresponding truth table?
+
+A minterm of $n$ variables is a conjunction that for each variable either contains it or its negation, but not both. 
+
+The final normal form consists of disjunctions of 4 minterms. This does not affect the final truth table as this is just a rewrite of the proposition, which means that the final outcome should not be changed.
+
+This approach did not yield a new value for x that makes the condition true.
+But we can show that $Q(x)$ and $R(x)$ are related properties.
+
+# Exercise 3
+1. Prove the following theorem: Let $x$ be a positive integer. It holds that
+$\gcd(x, 2) = 1$ if and only if $x$ is odd.
+2. Prove the following theorem: Let $x$ be a positive integer. It holds that
+$9^x−2 \bmod 5 = 2$ is equivalent to $x$ being odd.
+3. Explain why the previous theorems show that $Q(x)$ and $R(x)$ are the
+same function. Hence we can replace $R(x)$ with $Q(x)$ in (1) and show
+that it is equivalent to
+$$ 
+\begin{align}
+&\quad (P(x) \wedge \neg Q(x)) \vee \neg (P(x) \vee \neg Q(x) \vee Q(x)) \vee (\neg P(x) \wedge \neg Q(x) \wedge Q(x)) \\
+&\equiv (P(x) \wedge \neg Q(x)) \vee \neg (P(x) \vee \mathbb{T}) \vee (\neg P(x) \wedge \mathbb{F}) \\
+&\equiv P(x) \wedge \neg Q(x) &(2)
+\end{align}
+$$
+4. Check if (2) is in CNF, DNF, PCNF and PDNF.
+
+We have discovered that the condition is equivalent to x being a prime and $\gcd(x, 2) \neq 1$.
+
+# Exercise 4
+1. Formulate a proof by contradiction that shows that for all integers $x > 2$ the proposition $(P(x) \wedge \neg Q(x))$ is false. Hence show the following: Let $x > 2$ be an integer. Then $x$ can not be a prime and $\gcd(x, 2) \neq 1$.

@@ -37,7 +37,6 @@ is true. To show that $A$ is not a subset of $B$ we therefore only need to find 
 | $\overline{A \cap B} = \overline{A} \cup \overline{B}$<br>$\overline{A \cup B} = \overline{A} \cap \overline{B}$ | De Morgan’s laws (for sets) |
 | $A \cup (A \cap B) = A$<br>$A \cap (A \cup B) = A$                                                               | Absorption laws             |
 | $A \cup \overline{A} = U$<br>$A \cap \overline{A} = \emptyset$                                                   | Complement laws             |
-
 ## 3.2 Set operations
 ## 3.3 Membership tables
 Membership tables are closely related to [[Logic#Truth Tables]]. When filling out membership tables, you could think of the union operator $\cup$ as the *or* operator $\vee$ from propositional logic, and the intersection $\cap$ can be thought of as the *and* operator $\wedge$.
