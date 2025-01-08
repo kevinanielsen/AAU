@@ -113,8 +113,23 @@ Here, we can tell that 2 divides two, meaning that the greatest common divisor i
 
 Let's call the proposition $9^x-2 \bmod 5 = 2$ $P(x)$ and "$x$ is odd" $Q(x)$. We have to prove that $P(x) \equiv Q(x)$ when $x$ is a positive integer.
 
-Remember that the definition of an odd integer is $n=2k+1$. 
+First we have to prove that if $Q(x)$, then $P(x)$ holds. Then we have to prove that if $P(x)$ then $Q(x)$ holds. 
 
+We know that $a \bmod b = c \Rightarrow a \equiv c \pmod b$ 
+
+Part 1:
+Rewrite $9^x -2 \bmod 5 = 2$ as $9^x -2 \equiv 2 \pmod 5$. This can then be simplified as $9^x \equiv 4 \pmod 5$ by adding 2 to both sides of the equivalence. By the equivalence, $9^x \equiv 4 \pmod 5$, we know that we can substitute 4 with 9 and get $4^x-2 \equiv 2 \pmod 5$. Now, if we simplify this we get $4^x \equiv 4 \pmod 5$.
+
+If we try inserting different values for $x$:
+- $4^1 \equiv 4 \pmod 5$,
+- $4^2 \equiv 1 \pmod 5$,
+- $4^3 \equiv 4 \pmod 5$,
+- $4^4 \equiv 1 \pmod 5$.
+We can tell a pattern emerges, where when $x$ is even, $4^x\equiv 1 \pmod 5$ and when $x$ is odd, $4^x \equiv 4 \pmod 5$.
+Since we know that $9^x-2 \equiv 2 \pmod 5 \Rightarrow 4^x\equiv 4 \pmod 5$, we can tell that $x$ is odd, proving the first part of the equivalence.
+
+Part 2:
+We know that if $x$ is odd, then $4^x \equiv 4 \pmod 5$. Furthermore we know that the proposition $9^x-2 \bmod 5 =2$ can be rewritten as $4^x \equiv 4 \pmod 5$. This concludes the proof.
 ## 3. Explain why the previous theorems show that $Q(x)$ and $R(x)$ are the same function. Hence we can replace $R(x)$ with $Q(x)$ in (1) and show that it is equivalent to
 $$ 
 \begin{align}
@@ -123,9 +138,22 @@ $$
 &\equiv P(x) \wedge \neg Q(x) &(2)
 \end{align}
 $$
+Based on the proofs in tasks 3.1, 3.2, we know that both $Q(x)$ and $R(x)$ are equivalent to $x$ being odd. This means that they are the same function, making them interchangeable. 
+
 ## 4. Check if (2) is in CNF, DNF, PCNF and PDNF.
 
-We have discovered that the condition is equivalent to x being a prime and $\gcd(x, 2) \neq 1$.
+[[Logic#Conjunctive Normal Form|CNF]] is a proposition consisting of conjunctions of elementary disjunctions, hence $P(x) \wedge \neg Q(x)$ is in not in CNF, it is an elementary conjunction.
 
+[[Logic#Disjunctive Normal Form|DNF]] is a proposition consisting disjunctions of elementary conjunctions. If the second part of the original proposition (2) had been left out, then it would have been in DNF, but because the second part is a disjunction, the proposition is not in DNF.
+
+[[Logic#Principal Conjunctive Normal Form|PCNF]] is a proposition consisting of conjunctions of [[Logic#Maxterm|maxterms]]. No maxterms appear in the proposition (2), therefore it is not in PCNF
+
+[[Logic#Principal Disjunctive Normal Form|PDNF]] is a proposition consisting of disjunctions of [[Logic#Minterm|minterms]]. The only minterm appearing in the proposition is the first part, $(P(x) \wedge \neg Q(x))$. The other parts are not minterms and therefore the proposition is not in PDNF.
+
+We have discovered that the condition is equivalent to x being a prime and $\gcd(x, 2) \neq 1$.
 # Exercise 4
 ## 1. Formulate a proof by contradiction that shows that for all integers $x > 2$ the proposition $(P(x) \wedge \neg Q(x))$ is false. Hence show the following: Let $x > 2$ be an integer. Then $x$ can not be a prime and $\gcd(x, 2) \neq 1$.
+
+Forming a proof by contradiction, we have to prove the opposite of the statement i.e. that when $x > 2$, the proposition $(P(x) \wedge \neg Q(x))$ is true. 
+
+As we know by the definition of an odd number $n=2k+1$, every other number is odd. If $\gcd(x,2) \neq 1$ is to be true, then by our earlier proof of $Q(x)$,  $x$ would have to be a factor of 2. i.e. not odd. This is the proof by contradiction of $\neg Q(x)$. By this, we know that for $\neg Q(x)$ to be true, then the number has to be even and as we know, no even numbers above 2 are prime. This means that not both $P(x)$ and $\neg Q(x)$ can be true, making the proposition false when $x > 2$, concluding our proof by contradiction.
