@@ -6,25 +6,16 @@ In this workshop we will study the MergeSort sorting algorithm. A pseudocode for
 # Exercise 2
 1. **Proof by using induction, that MergeSort returns the sorted list containing the same elements as the input list $L$. In the proof you may assume, that Merge returns a sorted list containing the elements of two sorted lists given as inputs.**
 **Basis Step:**
-In the case of the basis step, we must check if $P(1)$. In this case, this would mean a list containing a single element, for which we will use $1$. Using a list with only a single element means that the input $l,r$ would be equivalent, meaning that the procedures in the if statement is never called upon. This leads us to the final statement in the pseudocode, the return of the L, being the original list. 
-$\{1\} \rightarrow \{1\}$
+When $l \geq r$, the list has 0 or 1 elements. In this case, MergeSort returns L unchanged, which is trivially sorted. 
+**Inductive Hypothesis:**
+Let $k \geq 1$. Assume that MergeSort correctly sorts all sublists of length $\leq k$.
 **Inductive Step:**
-For the inductive step, we must assume our inductive hypothesis $P(k)$ i.e. "MergeSort works for lists of $len(k)$".
-Inductive Hypothesis: $P(n)$ is true, $\forall 1 \leq n \leq k$.
-Furthermore, we can assume that merge returns a sorted list containing the elements of two sorted lists given as inputs.
 
-Given a list $L=\{2,1\}$ and the inputs $l=0, r=2-1=1$, the following will happen.
-1. The if statement is triggered because $l < r \Rightarrow 0 < 1$.
-2. The value of $m$ is set to $\left\lfloor \dfrac{r+l}{2} \right\rfloor = \left\lfloor \dfrac{1+0}{2} \right\rfloor =0$
-3. MergeSort is called with  $MergeSort(L, 0, 0)$, meaning that the if-statement is not triggered, and therefore returning the same list i.e. $\{2,1\}$. 
-4. MergeSort is triggered once again with $MergeSort(L,1,1)$, once again not triggering the if-statement and returning the list $\{2,1\}$.
-5. The value of $L$ is set to the return of the Merge function, which we assume to return a sorted list containing the elements of two sorted lists given as inputs, therefore returning a sorted list $\{1,2\}$
-$$
-\begin{align}
-\{2,1\} \rightarrow Merge\{\ MergeSort\{2\}, MergeSort\{1\} \; \} &= MergeSort \{2,1\} \\
-&\rightarrow \{1,2\}
-\end{align}
-$$
+Given a list of length $k+1$. When $MergeSort(L,l,r)$ is called:
+1. It computes $m=\left\lfloor \dfrac{l+r}{2} \right\rfloor$. 
+2. Since the left half is now shorter than $k+1$, by the inductive hypothesis, $MergeSort(L, l, m)$ correctly sorts the left half.
+3. Since the right half is now shorter than $k+1$, by the inductive hypothesis, $MergeSort(L,m+1,r)$ correctly sorts the right half.
+4. By our assumption, Merge correctly combines the two sorted halves into a fully sorted list.
 # Exercise 3
 In Ros it is shown that the merging of two sorted lists of lengths $a$ and $b$ can
 be accomplished by using at most $a + b − 1$ comparisons (Lemma 1, section
