@@ -29,10 +29,24 @@ In the case of a list of $len(1)$, there would be done a single comparison check
 Checking with our statement that mergesort uses $2^k(k+1)$ comparisons:
 $$2^0(0+1)=1(1)=1$$
 which means that our basis step holds.
-**Inductive Step:** For our inductive step, we must prove that $P(k+1)$ holds, based on the assumptions that merge uses $a+b-1$ comparisons and that $P(k)$ is true. 
+**Inductive Step:** For our inductive step, we must prove that $P(k+1)$ holds,
+i.e. that mergesort uses
+$$
+2^{k+1}((k+1)+1)
+$$
+comparisons, based on the assumptions that merge uses $a+b-1$ comparisons and that $P(k)$ is true. 
 During the inductive step it is important to remember that $\dfrac{1}{2}2^{k+1}=2^k$ i.e. $2^k+2^k=2^{k+1}$.
 Because mergesort splits up the list into to halves and performs mergesort on these, our inductive step basically says that 
 $2^{k+1} \rightarrow L_1=2^k \text{ and } L_2=2^k$, which we each know to use $2^k(k+1)$ comparisons based on our inductive hypothesis. After running mergesort on the two halves, merge is run with them as inputs i.e. $Merge(2^k, 2^k)=2^k+2^k-1$. 
+Total comparisons:
+$$ 
+\begin{align}
+&=2(2^k(k+1))+(2^{k+1}-1) \\
+&= 2^{k+1}(k+2)-1 \\
+&= 2^{k+1}((k+1)+1)
+\end{align}
+$$
+
 
 The proof is done using standard mathematical induction, starting with a base case of $k=0$. 
 2. **Use induction to show that Mergesort uses less or equal to $2n log2 (n)$ comparisons for all $n \geq 2$ using the same assumptions regarding the Merge procedure as before.**
