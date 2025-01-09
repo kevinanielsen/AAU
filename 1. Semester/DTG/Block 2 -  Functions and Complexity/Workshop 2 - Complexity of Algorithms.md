@@ -38,7 +38,7 @@ m &= \lfloor \frac{0+(2^k-1)}{2} \rfloor = \frac{2^k-1}{2} = 2^{k-1}-1
 $$
 ### iii) Argue that after the first time the while loop has run we have excluded half the elements of the list.
 We use the $m$ variable to get the median value (lower-middle value if $n$ is even) of the list. Each iteration of the while loop, we check if $x>a_m$ i.e. if the search value is higher than the middle value, if so, we set $i = m + 1$, else we set $j = m$ $i, j$ being the values we use to find the middle-most value. Thereby, we exclude half of the values in the list every iteration.
-### iv) Check that we have to half the list $log_2(n)$ times to end up with a list of just one element. (Remember that we assume $n = 2^k$. What happens if $n$ is not a power of 2?)**
+### iv) Check that we have to half the list $log_2(n)$ times to end up with a list of just one element. (Remember that we assume $n = 2^k$. What happens if $n$ is not a power of 2?)
 
 Since $n$ is a power of 2, we know that every time we half the list, it is like removing a power from the 2. E.g. if we start off with $2^4$, when we half the list we have $2^3$.  
 
@@ -65,20 +65,23 @@ We know that binary search has a complexity of $\Theta(log_2(n))$ and sorting th
 ### iii) At which point, i.e., for which $m$, do these two approaches have similar complexity? Which one is better when?
 Figuring out at which point the two approaches have similar complexity can be done by using the method for finding the intersections of two functions, because as we know, the value for big-theta is a function. 
 Linear search: $mn$
-Binary search + sorting: $(mlog_2(n))+nlog_2(n)$
+Binary search + sorting: $(m\log_2(n))+n\log_2(n)$
 Intersection:
 $$ 
 \begin{align}
-mn &= mlog_2(n)+nlog_2(n) \\
-mn - mlog_2(n)&=nlog_2(n) \\
-m(n-log_2(n)) &=nlog2(n) \\\\
-m &= \dfrac{nlog2(n)}{n-log2(n)}
+mn &= m\log_2(n)+n\log_2(n) \\
+mn - m\log_2(n)&=n\log_2(n) \\
+m(n-\log_2(n)) &=n\log_2(n) \\\\
+m &= \dfrac{n\log_2(n)}{n-\log_2(n)}
 \end{align}
 $$
 This means that 
 $$
 \begin{align} 
-m < \dfrac{nlog2(n)}{n-log2(n)} & \text{Linear search is better} \\\\
-m > \dfrac{nlog2(n)}{n-log2(n)} & \text{Sorting + binary search is better}
+m < \dfrac{n\log_2(n)}{n-\log_2(n)} & \text{Linear search is better} \\\\
+m > \dfrac{n\log_2(n)}{n-\log_2(n)} & \text{Sorting + binary search is better}
 \end{align}
 $$
+Inserting the value of 10000 for $n$:
+
+$m < 13,31$ Linear search is better, and $m > 13,31$ then sorting + binary search is better.
