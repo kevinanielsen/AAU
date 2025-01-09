@@ -27,8 +27,8 @@ Option a) would result in the original relation $S$ staying the same and no clos
 Option b) which generates a chain reaction would result in a transitive closure operation. 
 
 2. Find this closure for the relation in figure 1. We will call this new relation $S^∗$.
-$$S^* = S \cup \{(Bob, Noa), (Bob, Tom), (Ida, Liv), (Ida, Tom)\}$$
-![[23195.png]]
+$$S^* = S \cup \{(Bob, Noa), (Bob, Tom), (Ida, Liv), (Ida, Tom), (Ida, Noa), (Gus, Noa)\}$$
+![[92001.png]]
 # Exercise 3
 1. Consider the following sets
 $$ 
@@ -42,14 +42,16 @@ $$
 The set $F_{Tom}$ describes all the users who follow Tom e.g. has a relation to Tom. The set $F_{Noa}$ describes all users who follow Noa. Lastly, the set $F_{Tom} \cap F_{Noa}$ describes the users who follow both Tom and Noa.
 $$ 
 \begin{align}
-F_{Tom} &= \{Ida, Gus, Tom, Noa, Liv, Bob\} \\
-F_{Noa} &= \{Bob, Liv, Noa\} \\
-F_{Tom} \cap F_{Noa} &= \{Noa, Liv, Bob\}
+F_{Tom} &= \{Bob,Liv,Noa,Gus,Ida,Tom\} \\
+F_{Noa} &= \{Bob, Liv, Noa, Gus,Ida\} \\
+F_{Tom} \cap F_{Noa} &= \{Bob,Liv,Noa,Gus,Ida\}
 \end{align}
 $$
 
 2. Let $B \subseteq A$ and consider $G_{Tom} = \{b \in B \mid (b,Tom) \in S^*\}$. Show that $G_{Tom} \subseteq F_{Tom}$.
 Since $B \subseteq A$ e.g. all elements of $B$ must be in $A$, and $F_{Tom}$ is a "filtered" version $A$, then $G_{Tom}$ must be a "filtered" version of $B$. E.g. All elements of $G_{Tom}$ must be in $F_{Tom}$, therefore $G_{Tom} \subseteq F_{Tom}$. 
+
+I.e. $G_{Tom}, F_{Tom}$ are both followers of Tom, while $G_{Tom}$ is a subset of B, which is a subset of A, therefore $G_{Tom}$ must be a subset of $F_{Tom}$.  
 # Exercise 4
 1. Consider the relation $R$ on $A = \{w, x, y, z\}$ given by
 $$R = \{(w, w), (w, x), (x, y), (z, y)\}$$
@@ -86,7 +88,7 @@ $$S = \tilde{R} \cup \{(x,w), (y,x), (y,z)\}$$
 
 **b) Construct the transitive closure $S^*$ of $S$.**
 $$S^* = S \cup \{(w,y), (y,w), (x,z), (z,x)\}$$
-![[76395.png]]
+![[57421.png]]
 
 | ==$S^*$== | w   | x   | y   | z   |
 | --------- | --- | --- | --- | --- |
@@ -117,6 +119,6 @@ $$T' = T \cup \{(x,w), (y,x), (y,z), (y,w)\}$$
 | y        | 1   | 1   | 1   | 1   |
 | z        | 0   | 0   | 1   | 1   |
 5. **Compare the results from the two previous tasks. Which of the two final relations $S^*$ and $T'$ is an equivalence relation?**
-$T'$ Is not an equivalence relation since it is missing the transitive property as seen by there not being the following relations $(z,x), (x,z)$. It is, however, both symmetric and reflexive. 
+$T'$ Is not an equivalence relation since it is missing the transitive property as seen by there not being the following relations $(z,x), (x,z), (w,z), (z,w)$. It is, however, both symmetric and reflexive. 
 
 $S^*$ Is not an equivalence relation either since there is missing the relations $(w,z), (z,w)$ which would make it transitive. Like the $T'$ relation, it is only symmetric and reflexive.

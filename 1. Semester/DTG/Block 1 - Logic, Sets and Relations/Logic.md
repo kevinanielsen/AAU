@@ -49,7 +49,7 @@ The compound propositions $p$ and $q$ are logically equivalent if $p \leftrighta
 
 The symbol $\equiv$ is not a logical connective, and $p \equiv q$ is not a compound proposition but rather the statement that "$p \leftrightarrow q$ is a tautology".
 ### 1.2.2 De Morgan Laws
-There are two De Morgan laws. These laws are important as they tell us how to negate conjuctions and disjunctions. 
+There are two De Morgan laws. These laws are important as they tell us how to negate conjunctions and disjunctions. 
 
 #### 1.2.2.1 The First Law
 This law tells us how to negate a disjunction by taking the conjunction of the negations of the component propositions.
