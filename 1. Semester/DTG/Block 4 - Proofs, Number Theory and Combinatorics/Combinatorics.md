@@ -19,7 +19,7 @@ With combinations, we count the unordered selections of objects.
 
 Let $S$ be the set $\{1,2,3,4\}$. Then $\{1,3,4\}$ is a 3-combination from $S$. Note that $\{4,1,3\}$ is the same 3-combination as we don't care about the order of the list.
 
-The number of r-combinations of a set with $n$ distinct elements is denoted by $C(n,r)$. Note that $C(n,r)$ is also denoted by $\binom{n}{r}$ and is called the *binomail coefficient*. 
+The number of r-combinations of a set with $n$ distinct elements is denoted by $C(n,r)$. Note that $C(n,r)$ is also denoted by $\binom{n}{r}$ and is called the *binomial coefficient*. 
 
 The number of r-combinations of a set with $n$ elements, where $n$ is a nonnegative integer and $r$ is an integer with $0 \leq r \leq n$, equals
 $$
@@ -27,6 +27,8 @@ C(n,r)= \dfrac{n!}{r!(n-r)!}
 $$
 > [!NOTE] Note
 > Let $n$ and $r$ be nonnegative integers with $r \leq n$. Then $C(n,r)=C(n,n-r)$
+
+There are $C(n +r−1, r)= C(n +r−1, n−1)$ _r_-combinations from a set with _n_ elements when repetition of elements is allowed.
 
 ## 2.1 Examples
 1. How many different committees of three students can be formed from a group of four students?

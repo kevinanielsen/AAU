@@ -38,10 +38,14 @@ Assume we are interested in finding large numbers for which the condition is tru
 
 ### a) if we do not require them to be necessarily all different?
 
-For each of the spots $x,y,z$, we will have $1.000.000-100.000=900.000$ different possibilities, therefore the number of different ways to choose the numbers would be $900000^3$
+Using the formula $C(n +r−1, r)$ for getting combinations with repetitions allowed, we get
+$$
+C(900000+3-1,3)=\dfrac{900002!}{3!(900002-3)!}=\dfrac{900002!}{3!899999!}=\dfrac{900002\cdot900001\cdot900000}{6}
+$$
+combinations.
 
 ### b) if we want them to be pairwise diffrent?
-Because $x,y,z$ are distinct and labeled, the order matters. This means that this is a permutation problem i.e. we want to find $P(900000, 3)$ which can be done with the formula 
+Because $x,y,z$ are distinct and labeled, the order matters. This means that this is a [[Combinatorics#1 Permutations|permutation]] problem i.e. we want to find $P(900000, 3)$ which can be done with the formula 
 $$
 P(n,r)=\dfrac{n!}{(n-r)!}
 $$
