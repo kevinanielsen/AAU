@@ -33,7 +33,7 @@ $$
 \begin{align}
 i &= 0 \\
 j &= 2^k-1 \\
-m &= \lfloor \frac{0+(2^k-1)}{2} \rfloor = \frac{2^k-1}{2} = 2^{k-1}-1
+m &= \left\lfloor \frac{0+(2^k-1)}{2} \right\rfloor = \left\lfloor \frac{2^k-1}{2} \right\rfloor = 2^{k-1}-1
 \end{align}
 $$
 ### iii) Argue that after the first time the while loop has run we have excluded half the elements of the list.
