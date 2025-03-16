@@ -137,12 +137,231 @@ A_{2:3,3:4} = \left[ \;
 \end{matrix} 
 \; \right]
 $$
-# 2 Zero and Identity Matrices
+# 2 Different Matrices
+## 2.1 Zero Matrices
+A zero matrix is a matrix with all elements equal to zro. The zero matrix of size $m \times n$ is sometimes written as $0_{m \times n}$ but usually a zero matrix is denoted just 0.
+## 2.2 Identity Matrices
+An identity matrix is always square. Its diagonal elements, i.e., those with equal row and column indices, are all equal to one, and its off-diagonal elements are zero. Identity matrices are denoted by the letter $I$. Formally, the identity matrix of size $n$ is defined by 
+$$
+I_{i j} = \begin{cases}
+1 & i = j \\ 
+0 & i \neq j
+\end{cases}
+$$
+for $i,j=1, \dots, n$. For example,
+$$ 
+\begin{align}
+&\left[ \; 
+\begin{matrix} 
+1 & 0 \\
+0 & 1
+\end{matrix} 
+\; \right], &\left[ \; 
+\begin{matrix} 
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{matrix} 
+\; \right]
+\end{align}
+$$
+## 2.3 Sparse Matrices
+A matrix $A$ is said to be sparse if many of its entries are zero. Its *sparsity pattern* is the set of indices $(i,j)$ for which $A_{ij} \neq 0$. The number of nonzeros of a sparse matrix $A$ is the number of entries in its sparsity patter, and denoted $\mathbf{nnz}(A)$. If $A$ is $m \times n$ we have $\mathbf{nnz}(A) \leq mn$. Its density is $\mathbf{nnz}(A)/(mn)$, which is no more than one. Densities of sparse matrices that arise in applications are typically very small, as in $10^{-2}$ or $10^{-4}$. There is no precise definition of how small the density must be for a matrix to qualify as sparse. 
 
-# 3 Definitions
-## 3.1 Square
+An $n \times n$ identity matrix is sparse, since it has only $n$ nonzeros, so its density is $1/n$. The zero matrix is the sparsest possible, since it has no nonzero entries.
+## 2.4 Diagonal Matrices
+A square $n \times n$ matrix $A$ is *diagonal* if $A_{ij}=0$ for $i \neq j$. 
+
+The notation $\mathbf{diag}(a_1, \dots, a_n)$ is used to compactly describe the $n \times n$ diagonal matrix $A$ with diagonal entries $A_{11}=a_1, \dots, A_{nn}=a_n$. 
+### 2.4.1 Example
+$$ 
+\begin{align}
+&\left[ \; 
+\begin{matrix} 
+-3 &0 \\
+0 &0
+\end{matrix} 
+\; \right], &\left[ \; 
+\begin{matrix} 
+0.2 & 0 & 0 \\
+0 & -3 & 0 \\
+0 & 0 & 1.2
+\end{matrix} 
+\; \right].
+\end{align}
+$$
+Note that while the diagonal elements can be zero, all the non-diagonal elements have to be zero for it to be a diagonal matrix.
+
+The examples above can be noted as
+$$ 
+\begin{align}
+&\mathbf{diag}(-3, 0) &\mathbf{diag}(0.2, -3, 1.2)
+\end{align}
+$$
+## 2.5 Triangular Matrices
+A square $n \times n$ matrix $A$ is *upper triangular* if $A_{ij}=0$ for $i > j$, and it is *lower triangular* if $A_{ij}=0$ for $i < j$. (So a diagonal matrix is one that is both lower and upper triangular). If a matrix is either lower or upper triangular, it is called *triangular*. For example, the matrices
+$$ 
+\begin{align}
+&\left[ \; 
+\begin{matrix} 
+1 & -1 & 0.7 \\
+0 & 1.2 & -1.1 \\
+0 & 0 & 3.2
+\end{matrix} 
+\; \right], &\left[ \; 
+\begin{matrix} 
+-0.6 & 0 \\
+-0.3 & 3.5
+\end{matrix} 
+\; \right]
+\end{align}
+$$
+are upper and lower triangular, respectively.
+
+A triangular $n \times n$ matrix $A$ has up to $n(n+1)/2$ nonzero entries, i.e., around half its entries are zero. Triangular matrices are generally not considered sparse matrices, since their density is around 50%. 
+# 3 Transposition, Addition and Norms
+## 3.1 Transposition
+If $A$ is an $m \times n$ matrix, its *transpose*, denoted by $A^T$ (or sometimes $A'$ or $A^*$), is the $n \times m$ matrix given by $(A^T)_{ij}=A_{ji}$. In words, the rows and columns of $A$ are transposed in $A^T$. For example,
+$$
+\left[ \; 
+\begin{matrix} 
+0 & 4 \\
+7 & 0 \\
+3 & 1
+\end{matrix} 
+\; \right]^T
+= \left[ \; 
+\begin{matrix} 
+0 & 7 & 3 \\
+4 & 0 & 1
+\end{matrix} 
+\; \right].
+$$
+If we transpose a matrix twice, we get the original matrix $(A^T)^T=A$. The superscript $T$ in the transpose is the same one used to denote the inner product of two $n$-vectors.
+
+Transposition converts row vectors into column vectors and vice verse. It is sometimes convenient to express a row vector as $a^T$, where $a$ is a column vector. We might refer to the $m$ rows of an $m \times n$ matrix $A$ as $\tilde{a}_i^T, \dots, \tilde{a}_m^T$, where $\tilde a_1, \dots, \tilde a_m$ are column $n$-vectors. As an example, the second row of the matrix 
+$$
+\left[ \; 
+\begin{matrix} 
+0 & 7 & 3 \\
+4 & 0 & 1
+\end{matrix} 
+\; \right]
+$$
+can be written as (the row vector) $(4,0,1)^T$.
+### 3.1.1 Transpose of Block Matrices
+The transpose of a block matrix has the simple form
+$$
+\left[ \; 
+\begin{matrix} 
+A & B \\
+C & D
+\end{matrix} 
+\; \right]^T
+= \left[ \; 
+\begin{matrix} 
+A^T & C^T \\
+B^T &D^T
+\end{matrix} 
+\; \right],
+$$
+where $A,B,C,D$ are matrices with compatible sizes. The transpose of a block matrix is the transposed block matrix, with each element transposed.
+## 3.2 Addition
+Two matrices of the same size can be added together. The result is another matrix of the same size, obtained by adding the corresponding elements of the two matrices. For example, 
+$$
+\left[ \; 
+\begin{matrix} 
+0 & 4\\ 7 & 0 \\ 3 & 1
+\end{matrix} 
+\; \right] + \left[ \; 
+\begin{matrix} 
+1 & 2 \\ 2 & 3 \\ 0 & 4
+\end{matrix} 
+\; \right] = \left[ \; 
+\begin{matrix} 
+1 & 6 \\ 9 & 3 \\ 3 & 5
+\end{matrix} 
+\; \right].
+$$
+Matrix subtraction is similar. For example,
+$$
+\left[ \; 
+\begin{matrix} 
+1 & 6 \\ 9 & 3
+\end{matrix} 
+\; \right]- I = \left[ \; 
+\begin{matrix} 
+0 &6 \\ 9&2
+\end{matrix} 
+\; \right]
+$$
+## 3.3 Scalar-Matrix Multiplication
+Scalar multiplication of matrices is defined in a similar way as for vectors, and is done by multiplying every element of the matrix by the scalar. For example
+$$
+(-2)
+\left[ \; 
+\begin{array}{r}
+1 & 6 \\ 9 & 3 \\ 6 & 0
+\end{array} 
+\; \right]
+= 
+\left[ \; 
+\begin{array}{r}
+-2 & -12 \\ -18 & -6 \\ -12 & 0
+\end{array} 
+\; \right]
+$$
+## 3.4 Matrix Norms
+The norm of an $m \times n$ matrix $A$, denoted $\Vert A \Vert$, is the squareroot of the sum of the squares of its entries,
+$$
+\Vert A \Vert = \sqrt{\sum_{i=1}^m \sum_{j=1}^n A^2_{ij}}
+$$
+The norm of an $m \times n$ matrix is the norm of an $mn$-vector formed from the entries of the matrix in any order. The matrix norm is a quantitative measure of the magnitude of a matrix. The RMS of the matrix entries can be found with $\Vert A \Vert / \sqrt{mn}$. This tells us the typical size of the entries, independent of the matrix dimensions.
+
+For any two $m \times n$ matrices $A$ and $B$, we have the triangle inequality,
+$$
+\Vert A + B \Vert \leq \Vert A \Vert + \Vert B \Vert.
+$$
+The matrix norm allows us to define the distance between two matrices as $\Vert A - B \Vert$. 
+
+$$
+\Vert A \Vert ^2 = \Vert a_1 \Vert^2 + \cdots + \Vert a_n \Vert^2,
+$$
+where $a_1, \dots, a_n$ are the columns of A, i.e., the squared norm of a matrix is the sum of the squared norms of its columns.
+## Matrix-Vector multiplication
+If $A$ is an $m \times n$ matrix and $x$ is an $n$-vector, then the *matrix-vector product* $y=Ax$ is the $m$-vector $y$ with elements
+$$
+y_i=\sum_{k=1}^n A_{ik}x_k=A_{i1}x_1+\cdots A_{in}x_n
+,\quad i=1, \dots, m.
+$$
+For example,
+$$
+\left[ \; 
+\begin{matrix} 
+0 & 2 & -1 \\ -2 & 1 & 1
+\end{matrix} 
+\; \right]
+\left[ \; 
+\begin{matrix} 
+2 \\ 1 \\ -1
+\end{matrix} 
+\; \right]
+= \left[ \; 
+\begin{matrix} 
+(0)(2)+(2)(1)+(-1)(-1) \\
+(-2)(2)+(1)(1)+(1)(-1)
+\end{matrix} 
+\; \right]= \left[ \; 
+\begin{array}{r}
+3 \\ -4
+\end{array} 
+\; \right].
+$$
+# 4 Definitions
+## 4.1 Square
 A *square* matrix has an equal amount of rows and columns. A square matrix of size $n \times n$ is said to be of *order* $n$. 
-## 3.2 Tall
+## 4.2 Tall
 A *tall* matrix has more rows than columns (size $m \times n$ with $m > n$).
-## 3.3 Wide
+## 4.3 Wide
 A *wide* matrix has more columns than rows (size $m \times n$ with $n > m$).
