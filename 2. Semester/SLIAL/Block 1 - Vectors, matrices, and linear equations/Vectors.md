@@ -39,9 +39,10 @@ Notational conventions include:
 - Vectors written with arrows above them $(\vec{a})$.
 
 ![[8299.png]]
-# 1 Vector Addition
+# 1 Vector Calculations
+## 1.1 Vector addition
 Two vectors of the same size can be added together by adding the corresponding elements, to form another vector of the same size, called the sum of the vectors.
-## 1.1 Addition example
+## 1.2 Addition example
 $$
 \left[ \; 
 \begin{matrix} 
@@ -61,7 +62,7 @@ $$
 \end{matrix} 
 \; \right]
 $$
-## 1.2 Subtraction example
+## 1.3 Subtraction example
 $$
 \left[ \; 
 \begin{matrix} 
@@ -81,11 +82,11 @@ $$
 \end{matrix} 
 \; \right]
 $$
-## 1.3 Properties
+## 1.4 Properties
 - Vector addition is *commutative*: $a+b=b+a$.
 - Vector addition is associative: $(a+b)+c=a+(b+c)$. We can therefore write both as $a+b+c$.
 ![Proof that vector addition is commutative](28199.png)
-# 2 Scalar-Vector Multiplication
+## 1.5 Scalar-Vector Multiplication
 Scalar multiplication or scalar-vector multiplication is where a vector is multiplied by a scalar, which is done by multiplying every element of the vector by the scalar.
 $$
 (-2) \left[ \; 
@@ -113,7 +114,7 @@ $$
 \; \right] 
 $$
 ![[72003.png]]
-# 3 Linear Combinations
+# 2 Linear Combinations
 > A linear combination is when taking scaled versions of your vectors and adding them together.
 ![[73187.png]]
 
@@ -123,14 +124,14 @@ b_1 a_1 + \cdots + b_m a_m
 $$
 is a linear combination of the vectors, where $\beta_1, \ldots, \beta_m$ are the coefficients.
 
-## 3.1 Linear Combinations of Unit Vectors
+## 2.1 Linear Combinations of Unit Vectors
 We can write any $n$-vector $b$ as a linear combination of the standard unit vectors, as
 $$
 b=b_1 e_1 + \cdots + b_n e_n.
 $$
 where $b_i$ is the $i$th entry of $b$ (i.e. a scalar), and $e_i$ is the $i$th unit vector.
 In the linear combination of $e_1, \ldots, e_n$, the coefficients are the entries of the vector $b$.
-### 3.1.1 Example
+### 2.1.1 Example
 $$
 \left[ \; 
 \begin{matrix} 
@@ -158,16 +159,16 @@ $$
 \end{matrix} 
 \; \right]
 $$
-## 3.2 Special linear combinations
-### 3.2.1 Sum
+## 2.2 Special linear combinations
+### 2.2.1 Sum
 The linear combination with $\beta_1=\cdots = \beta_m = 1$ given by $a_1+\cdots + a_m$ is the sum of the vectors (since every vector has a coefficient of 1 and therefore the linear combination is just the addition of all the vectors).
-### 3.2.2 Average
+### 2.2.2 Average
 The linear combination with $\beta_1 = \cdots = \beta_m = 1 / m$, given by $(1/m)(a_1+ \cdots + a_m)$, is the *average* of the vectors.
-### 3.2.3 Affine Combination
+### 2.2.3 Affine Combination
 The linear combination where all the coefficients sum to one i.e. $\beta_1 + \cdots + \beta_m = 1$ is called an *affine combination*.
 
 When the coefficients in an affine combination are nonnegative, it is called a *convex combination*, *mixture*, or a *weighted average*. 
-# 4 Inner Products
+# 3 Inner Products
 The inner product of two $n$-vectors $a,b$ is defined as
 $$
 a^Tb=a_1b_1+a_2b_2+\cdots+a_nb_n
@@ -176,7 +177,7 @@ The inner product of two vectors result in a scalar.
 
 Other notation include $\langle a, b\rangle,(a \mid b), \ldots$
 
-# 5 Linear Functions
+# 4 Linear Functions
 A function mapping $n$-vectors to numbers is denoted by
 $f: \mathbf{R}^n \rightarrow \mathbf{R}$. 
 
@@ -190,7 +191,7 @@ Any function that satisfies superposition is called linear.
 
 Linear functions always cross through $(0,0)$
 
-# 6 Regression Models
+# 5 Regression Models
 Regression model is the affine function of $x$
 $$
 \hat{y} = x^T \beta + v
@@ -201,7 +202,7 @@ where:
 - the scalar $v$ is the offset,
 - the scalar $\hat{y}$ is the prediction.
 
-## 6.1 Example
+## 5.1 Example
 $$
 \left[ \; 
 \begin{matrix} 
@@ -214,19 +215,19 @@ $$
 \end{matrix} 
 \; \right]=1\cdot0+2\cdot-1+3\cdot4=10
 $$
-# 7 Norms
-## 7.1 Euclidean Norm
+# 6 Norms
+## 6.1 Euclidean Norm
 The euclidean norm of a vector is the squareroot of the sum of the squares of its elements i.e. $\lVert x \rVert = \sqrt{x^2_1 + x^2_2 + \cdots + x^2_n}$. The euclidean norm can also be expressed as the squareroot of the inner product of the vector itself i.e. $\lVert x \rVert = \sqrt{x^Tx}$. We should avoid expressing it as the length of the vector as that usually refers to the dimension of the vector. When $x$ is a scalar or a 1-vector, the norm is the same as the absolute value of $x$.
-### 7.1.1 Properties of norm
-#### 7.1.1.1 Nonnegative homogeneity 
+### 6.1.1 Properties of norm
+#### 6.1.1.1 Nonnegative homogeneity 
 $\lVert \beta x \rVert = \lvert \beta \rvert \lVert x \rVert$. Multiplying a vector by a scalar multiplies the norm by the absolute value of the vector.
-#### 7.1.1.2 Triangle inequality
+#### 6.1.1.2 Triangle inequality
 $\lVert x + y \rVert \leq \lVert x \rVert + \lVert y \rVert$. The euclidean norm of a sum of two vectors is no more than the sum of their norms. Another name is *subadditivity*.
-#### 7.1.1.3 Nonnegativity
+#### 6.1.1.3 Nonnegativity
 $\lVert x \rVert \geq 0$.
-#### 7.1.1.4 Definiteness
+#### 6.1.1.4 Definiteness
 $\lVert x \rVert = 0$ only if $x = 0$.
-## 7.2 Root Mean Square (RMS)
+## 6.2 Root Mean Square (RMS)
 The root mean square value of a vector $x$ is defined by 
 $$
 \mathbf{rms}(x)=\sqrt{\dfrac{x_1^2+\cdots+x_n^2}{n}}=\dfrac{\lVert x \rVert}{\sqrt{n}}
@@ -234,7 +235,7 @@ $$
 The argument of the square root in the middle statement $\dfrac{x_1^2+\cdots+x_n^2}{n}$ is called the mean square value of $x$ and is denoted by $\mathbf{ms}(x)$. 
 
 The rms tells us what the 'typical' value of $\lvert x_i \rvert$ is. For example, the norm of the vector with only ones would be $\sqrt{n}$, while the RMS value would be 1 independent of $n$.
-## 7.3 Norm of a sum
+## 6.3 Norm of a sum
 Calculating the norm of a sum of two vectors can be done with the following formula:
 $$
 \lVert x+y \rVert = \sqrt{\lVert x \rVert ^2 + 2x^T y + \lVert y \rVert^2}.
@@ -248,9 +249,9 @@ $$
 \end{align}
 $$
 Taking the squareroot of both sides of the equation yields the formula above.
-## 7.4 Norm of block vectors
+## 6.4 Norm of block vectors
 The norm-squared of a stacked vector is the sum of the norm-squared values of its subvectors.
-### 7.4.1 Example
+### 6.4.1 Example
 With $d=(a,b,c)$ where $a, b, c$ are vectors, we have
 $$
 \lVert d \rVert ^2 = d^T d = a^T a + b^T b + c^T c = \lVert a \rVert^2 + \lVert b \rVert^2 + \lVert c \rVert^2.
@@ -260,7 +261,7 @@ $$
 \lVert (a,b,c) \rVert = \sqrt{\lVert a \rVert^2+\lVert b \rVert^2+\lVert c \rVert^2}=\lVert (\lVert a \rVert, \lVert b \rVert, \lVert c \rVert) \rVert.
 $$
 I.e. the norm of a stacked vector is the norm of the vector formed from the norms of the subvectors.
-## 7.5 Chebyshev inequality
+## 6.5 Chebyshev inequality
 Suppose that $x$ is an $n$-vector, and that $k$ of its entries satisfy $\lVert x_i \rVert \geq a$, where $a > 0$. Then $k$ of its entries satisfy $x_i^2 \geq a^2$. It follows that
 $$
 \lVert x \rVert^2=x_1+^2+\cdots + x_n^2 \geq ka^2,
@@ -272,6 +273,35 @@ $$
 \dfrac{k}{n} \leq \left(\dfrac{\mathbf{rms}(x)}{a}\right)^2,
 $$
 where $k$ is, as above, the number of entries of $x$ with an absolute value of at least $a$. It says for example that no more than $1/25=4\%$ of the entries of a vector can exceed its RMS value by more than a factor of 5. 
+# 7 Standard deviation
+For any vector $x$, the vector $\tilde{x} = x - \mathbf{avg} (x) \mathbf 1$ is called the associated de-meaned vector, obtained by subtracting from each entry of $x$ the mean value of the entries. The mean value of the entries of $\tilde x$ is zero, i.e., $\mathbf{avg}(\tilde x)=0$. De-meaned version of $x$ is $x$ with its mean removed. It is used to understand how entries of a vector deviate from their mean value. It is zero if all the entries in the original vector $x$ are the same.
+
+The standard deviation of an $n$-vector $x$ is defined as the RMS value of the de-meaned vector $x-\mathbf{avg}(x)\mathbf 1$, i.e.,
+$$
+\mathbf{std}(x)=\sqrt{\dfrac{(x_1-\mathbf{avg}(x))^2+\cdots + (x_n-\mathbf{avg}(x))^2}{n}}.
+$$
+This is the same as the RMS deviation between a vector $x$ and the vector all of whose entries are $\mathbf{avg}(x)$. It can be written using the inner product and norm as 
+$$
+\mathbf{std}(x)=\dfrac{\lVert x - (\mathbf{1}^Tx/n)\mathbf 1 \lVert}{\sqrt n}.
+$$
+Where $\mathbf{1}$ denotes an $n$-vector where all values are 1, therefore $\mathbf{1}^T x$ denotes the sum of the entries of the vector $x$.
+
+This tells us the typical amount by which the entries of $x$ deviate from their average value. It is zero only if all entries are equal. The standard deviation of a vector is small when the entries of the vector are nearly the same.
+
+The greek letter $\sigma$ may be used to denote standard deviation, while the mean can be denoted by $\mu$ (mu).
+
+$$
+\mathbf{rms}(x)^2 = \mathbf{avg}(x)^2 + \mathbf{std}(x)^2
+$$
+## 7.1 Example
+$$ 
+\begin{align}
+x &= (1,-2,3,2) \\
+\mathbf{avg}(x) &= 1 \\
+\tilde x &= (0,-3,2,1) \\
+\mathbf{std}(x) &= 1.872
+\end{align}
+$$
 # 8 Distance
 ## 8.1 Euclidean distance
 ![[195.png]]
@@ -291,8 +321,150 @@ i.e. the sum of the length of sides a->b and b->c will always be greater than th
 $$
 \lVert a - c \rVert = \lVert (a - b) + (b - c) \rVert \leq \lVert a - b \rVert + \lVert b - c \rVert
 $$
-# 9 Definitions
-## 9.1 Block or Stacked Vectors
+
+
+# 9 Angle
+## 9.1 Cauchy-Schwarz Inequality
+$$
+\lvert a^T b \rvert \leq \lVert a \rVert \cdot \lVert b \rVert
+$$
+for any $n$-vectors $a$ and $b$.
+## 9.2 Angle between two vectors
+The angle between two nonzero vectors $a, b$ is defined as 
+$$
+\theta = \arccos \left( \dfrac{a^T b}{\Vert a \Vert \Vert b \Vert} \right)
+$$
+where arccos denotes the inverse cosine, normalized to lie between the interval $[0, \pi]$. In other words, we define $\theta$ as the unique number to lie between $0$ and $\pi$ that satisfies
+$$
+a^T b = \Vert a \Vert \Vert b \Vert \cos 0.
+$$
+The angle between $a$ and $b$ is written as $\angle (a,b)$, and is sometimes expressed in degrees.
+
+- If the angle is $\pi / 2 = 90 ^ \circ$ i.e. $a^T b = 0$ the vectors are said to be orthogonal and denoted by $a \perp b$. By convention we say that a zero vector is orthogonal to any vector.
+- If the angle is zero, i.e., $a^T b = \lVert a \lVert \lVert b \lVert$, the vectors are aligned.
+- If the angle is $\pi = 180 ^\circ$, i.e., $a^T b = -\lVert a \lVert \lVert b \lVert$, the vectors are anti-aligned.
+- If $\angle (a,b) < \pi / 2 = 90 ^\circ$, the vectors are said to make an acute angle. This is the same as $a^T b > 0$ i.e. the vectors have a positive inner product.
+- If $\angle (a,b) > \pi / 2 = 90^ \circ$, the vectors have an obtuse angle. This is the same as $a^T b < 0$, i.e., the vectors have a negative inner product.
+### 9.2.1 Example
+The angle between vectors $a=(1,2,-1)$ and $b=(2,0,-3)$ is 
+$$
+\arccos \left( \dfrac{5}{\sqrt{6} \sqrt{13}} \right) = \arccos (0.5661) = 0.9690=55.52^ \circ
+$$
+## 9.3 Correlation coefficient
+Assuming the de-meaned vectors $\tilde a, \tilde b$ are not zero, we define their correlation coefficient as
+$$
+\rho = \dfrac{\tilde a ^T \tilde b}{\lVert \tilde a \lVert \lVert \tilde b \lVert}.
+$$
+$\rho = \cos \theta$, where $\theta = \angle (\tilde a, \tilde b)$. The correlation coefficient can be expressed in terms of the vectors $u$ and $v$ obtained by standardizing $a$ and $b$. With $u=\tilde a / \mathbf{std}(a)$ and $v=\tilde b / \mathbf{std}(b)$, we have
+$$
+\rho = u^T v /n
+$$
+The Cauchy-Schwarz inequality tells us that the correlation coefficient ranges between -1 and +1. It is sometimes expressed as a percentage.
+
+When $\rho = 0$ or $\rho = 0\%$, we say the vectors are uncorrelated. By convention, we say that a vector with all entries equal is uncorrelated with any vector.
+
+High correlation (say, $\rho = 0.8 = 80\%$) means that the entries of $a$ and $b$ are typically above their mean for many of the same entries. $\rho = 1$ only occurs if $\tilde a$ and $\tilde b$ are aligned. $\rho = -1$ occurs only when $\tilde a$ and $\tilde b$ are negative multiples of each other.
+![[64062.png]]
+# 10 Linear Dependence
+A set of $n$-vectors $\{a_1, \ldots, a_k\}$ (with $k \geq 1$) is linearly dependent if
+$$
+\beta_1a_1 + \cdots + \beta_k a_k = 0
+$$
+holds for some $\beta_1, \ldots, \beta_k$, that are not all zero. If any vector in the set is a 0-vector (a vector where all values are 0), the set is linearly dependent. If a set of vectors is linearly dependent it means that at least one of the vectors in the set can be written as a linear combination of the others.
+### 10.1.1 Example
+$$ 
+a_1 = \left[ \; 
+\begin{matrix} 
+0.2 \\ -7 \\ 8.6
+\end{matrix} 
+\; \right], 
+\quad
+a_2 = \left[ \; 
+\begin{matrix} 
+-0.1 \\ 2 \\ -1
+\end{matrix} 
+\; \right],
+\quad
+a_3 = \left[ \; 
+\begin{matrix} 
+0 \\ -1 \\ 2.2
+\end{matrix} 
+\; \right]
+$$
+are all linearly dependent, since $a_1+2a_2+(-3)a_3=0$ (since not all scalars/weights are 0).
+
+We can express any of them as linear combinations of the other two e.g.
+$$a_2 = (-1/2)a_1+(3/2)a_3$$
+![[7300.png]]
+
+## 10.2 Linear independence
+
+A set of $n$-vectors $\{a_1, \ldots, a_k\}$ (with $k \geq 1$) is linearly independent if
+$$
+\beta_1a_1 + \cdots + \beta_k a_k = 0
+$$
+only holds for $\beta_1 = \cdots = \beta_k = 0$.
+
+### 10.2.1 Independence-dimension inequality
+If the n-vectors $a_1, \ldots, a_k$ are linearly independent, then $k \leq n$. In words: A linearly independent collection of $n$-vectors can have at most n elements.
+In other words, any collection of $n+1$ or more $n$-vectors are linearly dependent.
+## 10.3 Basis
+A collection of $n$ linear independent $n$-vectors $_1, \ldots, a_n$, i.e. the biggest possible collection of linearly independent vectors, is called a *basis*. Any $n$-vector $b$ can be expressed as a linear combination of them by the [[Vectors#11.3.1 Independence-dimension inequality|independence-dimension inequality]]
+$$b = \beta_1a_1 + \cdots + \beta_na_n$$
+for some $\beta_1, \ldots, \beta_n$.
+### 10.3.1 Expansion
+When we refer to the $n$-vector $b$, as a linear combination of a basis $a_1, \ldots, a_n$, we refer to 
+$$
+b = \alpha_1a_1 + \ldots + \alpha_n a_n,
+$$
+as the *expansion* of $b$ in the $a_1, \ldots, a_n$ basis. The numbers $\alpha_1, \ldots, \alpha_n$ are called the *coefficients* of the expansion of $b$ in the basis $a_1, \ldots, a_n$.
+## 10.4 Orthonormal vectors
+A collection of $n$-vectors $a_1, \ldots, a_k$ are (mutually) orthogonal if $a_i \perp a_j$ for any $i,j$ with $i \neq j$.
+A collection of vectors $a_1, \ldots, a_k$ is *orthonormal* if it is orthogonal and $\lVert a_i \rVert = 1$ for $i=1, \ldots, k$. (A vector of norm 1 is called *normalized*, dividing a vector by it's norm is called *normalizing* it). Therefore, each vector in an orthonormal collection of vectors is normalized, and two different vectors from the collection are orthogonal. These conditions can combined into a statement about the inner product of pairs of vectors in a collection $a_1, \ldots, a_k$ is orthonormal means that
+$$
+a_i^T a_j= \begin{cases}1 & i=j \\ 0 & i \neq j\end{cases}
+$$
+Orthonormal collections of vectors are linearly independent.
+
+Orthonormality is an attribute of a collection or set of vectors and not an attribute of a vector itself. 
+### 10.4.1 Linear Combinations of Orthonormal Vectors
+Suppose a vector $x$ is a linear combination of $a_1, \ldots, a_k$, where $a_1, \ldots, a_k$ are orthonormal,
+$$x = \beta_1 a_1 + \cdots + \beta_k a_k,$$
+taking the inner product of both sides of the equation with $a_i$ yields
+$$
+a_i^T x = a_i^T(\beta_1 a_1 + \cdots + \beta_k a_k)=\beta_i,
+$$
+so by taking the inner product the inner products with the vectors we can easily find the coefficients of the linear combination. 
+
+For any $x$ that is a linear combination of orthonormal vectors $a_1, \ldots, a_k$, we have the identity
+$$
+x = (a_1^Tx)a_1+\cdots + (a_k^Tx)a_k.
+$$
+This identity gives a simple way to check if a $n$-vector $y$ is a linear combination of the orthonormal vectors $a_1, \ldots, a_k$. If the identity holds for $y$, i.e.
+$$
+y = (a_1^Ty)a_1+\cdots + (a_k^Ty)a_k.
+$$
+then $y$ is a linear combination of $a_1, \ldots, a_k$. Conversely, if $y$ is a linear combination of $a_1, \ldots, a_k$, then the identity holds for $y$.
+### 10.4.2 Orthonormal Basis
+If the $n$-vectors $a_1, \ldots, a_k$ are orthonormal, they are linearly independent, and therefore also a [[Vectors#11.3 Basis|basis]]. This is called an *orthonormal basis*.
+## 10.5 Gram-Schmidt (orthogonalization) algorithm
+An algorithm to check if $a_1, \ldots, a_k$ are linearly independent.
+
+![[31584.png]]
+
+- If the algorithm stops early ( at step 2 ), $a_1, \ldots, a_k$ are linearly independent.
+- if the algorithm stops early in iteration $i= j$, then $a_j$ is a linear combination of $a_1,\ldots,a_j−1$ (so $a_1,\ldots,a_k$ are linearly dependent).
+- If the Gram-Schmidt algorithm completes, then the set of vectors are linearly independent.
+
+The orthogonalization step reduces to $\tilde{q}_1=a_1$ when $i=1$. If the algorithm dos not quit in step 2, i.e., $\tilde q_1, \ldots, \tilde q_k$  are all nonzero, and we can conclud that the original collection of vectors is linearly independent, likewise if the algorithm dos quit early, we can conclude that the original collection of vectors is linearly dependent (and that $a_j$ is a linear combination of $a_1, \ldots, a_{j-1}$).
+### Determining if a vector is a linear combination of linearly independent vectors
+If vectors $a_1, \ldots, a_k$ are linearly independent, we can determine if a vector $b$ is a linear combination of them using the Gram-Schmidt algorithm. We apply the algorithm to the list of $k+1$ vectors
+$$
+a_1, \ldots, a_k, b
+$$
+These vectors are linearly dependent if $b$ is a linear combination of $a_1, \ldots, a_k$. 
+# 11 Definitions
+## 11.1 Block or Stacked Vectors
 It can be useful to define vectors by *concatenating* or *stacking* two or more vectors, as in 
 $$
 a = \left[ \; 
@@ -306,7 +478,7 @@ $$
 a=(b_1,b_2,\ldots,b_m,c_1,c_2,\ldots,c_n,d_1,d_2,\ldots,d_p).
 $$
 The stacked vector $a$ is also written as $a=(b,c,d)$. Stacked vectors can also include scalars (numbers). if $a$ is a 3-vector, $(1,a)$ is the 4-vector $(1,a_1,a_2,a_3)$.
-## 9.2 Subvectors
+## 11.2 Subvectors
 In the equation 
 $$
 a=(b_1,b_2,\ldots,b_m,c_1,c_2,\ldots,c_n,d_1,d_2,\ldots,d_p)
@@ -318,11 +490,11 @@ $$
 a_{r:s}=(a_r, \ldots, a_s).
 $$
 The subscript $r:s$ is called the *index range*.
-### 9.2.1 Examples
+### 11.2.1 Examples
 If $z$ is the 4-vector $(1,-1,2,0)$, the slice $z_{2:3}$ is $z_{2:3}=(-1,2)$.
-## 9.3 Zero Vectors
+## 11.3 Zero Vectors
 A *zero vector* is a vector with all elements equal to zero. Sometimes, the zero vector with size $n$ is written as $0_n$.
-## 9.4 Unit Vectors
+## 11.4 Unit Vectors
 A (standard) unit vector is a vector with all elements equal to zero, except one element which is equal to one. The $i$th unit vector of size $n$ is the unit vector with $i$th element one, and denoted $e_i$. 
 $$ 
 \begin{align}
@@ -351,11 +523,11 @@ $$
 0 & j \neq i.
 \end{cases}
 $$
-## 9.5 Ones Vectors
+## 11.5 Ones Vectors
 We use the notation $1_n$ for the $n$-vector with all its elements equal to one.
-## 9.6 Sparsity
+## 11.6 Sparsity
 A vector is said to be sparse if many of its entries are zero; its sparsity pattern is the set of indices of nonzero entries. The number of nonzero entries of an $n$-vector $x$ is denoted $\mathbf{nnz}(x)$. 
-## 9.7 Flops
+## 11.7 Flops
 Basic arithmetic operations (addition, multiplication, $\ldots$) are called floating point operations or flops.
 
 The complexity of an algorithm or operation can be defined by the total number of flops needed. This is usually very grossly approximated.
