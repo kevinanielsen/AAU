@@ -178,19 +178,53 @@ The inner product of two vectors result in a scalar.
 Other notation include $\langle a, b\rangle,(a \mid b), \ldots$
 
 # 4 Linear Functions
-A function mapping $n$-vectors to numbers is denoted by
-$f: \mathbf{R}^n \rightarrow \mathbf{R}$. 
-
+## 4.1 Notation
+A function mapping $n$-vectors to real numbers is denoted by
+$f: \mathbf{R}^n \rightarrow \mathbf{R}$. i.e. it is a scalar-valued function of $n$-vectors. If $x$ is an $n$-vector, then $f(x)$, which is a scalar, denotes the *value* of the function $f$ at $x$. (In the notation $f(x)$, $x$ is referred to as the *argument* of the function). We can interpret $f$ as a function of $n$ scalar arguments, in which case we write $f(x)$ as 
+$$f(x)=f(x_1, x_2, \dots, x_n).$$
+## 4.2 The Inner Product Function
+Suppose $a$ is an $n$-vector, then we could define a scalar-valued function $f$ of $n$-vectors, given by
+$$f(x)=a^Tx=a_1x_1+a_2x_2+\cdots+a_nx_n$$
+for any $n$-vector $x$, this function gives the inner product of its $n$-vector argument $x$ with some (fixed) $n$-vector $a$. 
+## 4.3 Superposition and Linearity
 $f$ satisfies the superposition property if
 $$
 f(\alpha x + \beta y)= \alpha f(x) + \beta f(y)
 $$
 holds for all numbers $\alpha, \beta,$ and all $n$-vectors, $x,y$.
 
-Any function that satisfies superposition is called linear.
+Any function that satisfies superposition is called *linear*.
 
 Linear functions always cross through $(0,0)$
 
+The superposition equality can be broken down into two properties:
+Homogeneity: For any $n$-vector $x$ and any scalar $\alpha$, $f(\alpha x)=\alpha f(x)$.
+Additivity: For any $n$-vectors $x$ and $y$, $f(x+y)=f(x)+f(y)$.
+
+Any linear scalar-valued function $f$ can be described as the inner product of its argument with some fixed vector.
+## Affine functions
+A linear function plus a constant is called an affine function. A function $f:\mathbf{R}^n \rightarrow \mathbf{R}$ is affine if and only if it can be expressed as $f(x)=a^Tx+b$ for some $n$-vector $a$ and scalar $b$, which is sometimes called the *offset*. For example, the function on 3-vectors defined by
+$$
+f(x)=2.3-2x_1+1.3x_2-x_3
+$$
+is affine, with $b=2.3,a=(-2,1.3,-1)$.
+
+Any affine scalar-valued function satisfies the following variation on the super-position property:
+$$
+f(\alpha x + \beta y)=\alpha f(x) + \beta f(y),
+$$
+for all $n$-vectors $x,y$, and all scalars $\alpha, \beta$ that satisfy $\alpha + \beta = 1$, i.e., for linear functions, superposition holds for any coefficients $\alpha$ and $\beta$; for affine functions, it holds when the coefficients sum to one. 
+
+To see that the restricted superposition property holds for an affine function $f(x)=a^T x + b$, we note that, for any vectors $x,y$ and scalars $\alpha$ and $\beta$ that satisfy $\alpha + \beta = 1$, 
+$$ 
+\begin{align}
+f(\alpha x + \beta y) &= a^T(\alpha x + \beta y) + b \\
+&= \alpha a^Tx + \beta a^Ty+(\alpha + \beta)b \\
+&= \alpha (a^Tx + b)+\beta(a^Ty+b) \\
+&= \alpha f(x) + \beta f(y).
+\end{align}
+$$
+To show that a function is not affine, we find vectors $x,y$ and numbers $\alpha, \beta$ with $\alpha+\beta=1$, and verify that $f(\alpha x + \beta y) \neq \alpha f(x)+\beta f(y)$. This shows that $f$ cannot be affine. The converse is also true: Any  scalar-valued function that satisfies the restricted superposition property is affine
 # 5 Regression Models
 Regression model is the affine function of $x$
 $$
@@ -457,7 +491,7 @@ An algorithm to check if $a_1, \ldots, a_k$ are linearly independent.
 - If the Gram-Schmidt algorithm completes, then the set of vectors are linearly independent.
 
 The orthogonalization step reduces to $\tilde{q}_1=a_1$ when $i=1$. If the algorithm dos not quit in step 2, i.e., $\tilde q_1, \ldots, \tilde q_k$  are all nonzero, and we can conclud that the original collection of vectors is linearly independent, likewise if the algorithm dos quit early, we can conclude that the original collection of vectors is linearly dependent (and that $a_j$ is a linear combination of $a_1, \ldots, a_{j-1}$).
-### Determining if a vector is a linear combination of linearly independent vectors
+### 10.5.1 Determining if a vector is a linear combination of linearly independent vectors
 If vectors $a_1, \ldots, a_k$ are linearly independent, we can determine if a vector $b$ is a linear combination of them using the Gram-Schmidt algorithm. We apply the algorithm to the list of $k+1$ vectors
 $$
 a_1, \ldots, a_k, b
