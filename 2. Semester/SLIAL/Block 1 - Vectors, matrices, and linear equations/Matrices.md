@@ -329,7 +329,7 @@ $$
 \Vert A \Vert ^2 = \Vert a_1 \Vert^2 + \cdots + \Vert a_n \Vert^2,
 $$
 where $a_1, \dots, a_n$ are the columns of A, i.e., the squared norm of a matrix is the sum of the squared norms of its columns.
-## Matrix-Vector multiplication
+## 3.5 Matrix-Vector multiplication
 If $A$ is an $m \times n$ matrix and $x$ is an $n$-vector, then the *matrix-vector product* $y=Ax$ is the $m$-vector $y$ with elements
 $$
 y_i=\sum_{k=1}^n A_{ik}x_k=A_{i1}x_1+\cdots A_{in}x_n

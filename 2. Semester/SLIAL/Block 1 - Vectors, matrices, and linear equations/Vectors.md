@@ -225,30 +225,6 @@ f(\alpha x + \beta y) &= a^T(\alpha x + \beta y) + b \\
 \end{align}
 $$
 To show that a function is not affine, we find vectors $x,y$ and numbers $\alpha, \beta$ with $\alpha+\beta=1$, and verify that $f(\alpha x + \beta y) \neq \alpha f(x)+\beta f(y)$. This shows that $f$ cannot be affine. The converse is also true: Any  scalar-valued function that satisfies the restricted superposition property is affine
-# 5 Regression Models
-Regression model is the affine function of $x$
-$$
-\hat{y} = x^T \beta + v
-$$
-where: 
-- $x$ is a feature vector; its elements $x_i$ are called regressors,
-- $n$-vector $\beta$ is the weight vector,
-- the scalar $v$ is the offset,
-- the scalar $\hat{y}$ is the prediction.
-
-## 5.1 Example
-$$
-\left[ \; 
-\begin{matrix} 
-1 \\ 2 \\ 3
-\end{matrix} 
-\; \right]
-\left[ \; 
-\begin{matrix} 
-0 \\ -1 \\ 4
-\end{matrix} 
-\; \right]=1\cdot0+2\cdot-1+3\cdot4=10
-$$
 # 6 Norms
 ## 6.1 Euclidean Norm
 The euclidean norm of a vector is the squareroot of the sum of the squares of its elements i.e. $\lVert x \rVert = \sqrt{x^2_1 + x^2_2 + \cdots + x^2_n}$. The euclidean norm can also be expressed as the squareroot of the inner product of the vector itself i.e. $\lVert x \rVert = \sqrt{x^Tx}$. We should avoid expressing it as the length of the vector as that usually refers to the dimension of the vector. When $x$ is a scalar or a 1-vector, the norm is the same as the absolute value of $x$.
@@ -486,8 +462,7 @@ An algorithm to check if $a_1, \ldots, a_k$ are linearly independent.
 
 ![[31584.png]]
 
-- If the algorithm stops early ( at step 2 ), $a_1, \ldots, a_k$ are linearly independent.
-- if the algorithm stops early in iteration $i= j$, then $a_j$ is a linear combination of $a_1,\ldots,a_j−1$ (so $a_1,\ldots,a_k$ are linearly dependent).
+- if the algorithm stops early in iteration $i= j$ (step 2), then $a_j$ is a linear combination of $a_1,\ldots,a_j−1$ (so $a_1,\ldots,a_k$ are linearly dependent).
 - If the Gram-Schmidt algorithm completes, then the set of vectors are linearly independent.
 
 The orthogonalization step reduces to $\tilde{q}_1=a_1$ when $i=1$. If the algorithm dos not quit in step 2, i.e., $\tilde q_1, \ldots, \tilde q_k$  are all nonzero, and we can conclud that the original collection of vectors is linearly independent, likewise if the algorithm dos quit early, we can conclude that the original collection of vectors is linearly dependent (and that $a_j$ is a linear combination of $a_1, \ldots, a_{j-1}$).
