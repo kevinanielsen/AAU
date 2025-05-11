@@ -3,6 +3,12 @@
 # Conditional Probability
 Suppose a fair coin is flipped four times, and the first time it comes up heads. Given this information, what is the probability that heads comes up three times? To answer this we use the concept of conditional probability.
 
+The *conditional probability* for $E$ provided $F$ is defined by
+$$
+p(E \vert F)= \dfrac{p(E \cap F)}{p(F)}
+$$
+
+
 Let $S$ be the sample space of an experiment with a finite or countable number of outcomes. We assign a probability $p(s)$ to each outcome $s$. We require that two conditions be met:
 $$ 
 \begin{align}

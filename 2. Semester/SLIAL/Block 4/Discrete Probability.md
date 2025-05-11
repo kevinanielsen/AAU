@@ -40,4 +40,4 @@ $$
 P(E_1 \cup E_2) = \frac{13}{52} + \frac{4}{52} - \frac{1}{52} = \frac{16}{52} = \frac{4}{13}
 $$
 
-So, the probability of drawing either a heart or a king is $\frac{4}{13}$.
+So, the probability of drawing **either** a heart or a king is $\frac{4}{13}$. The "either" is important because if we draw a king of hearts, then that would be **both** a king and a heart, which is why we subtract the probability of that happening.
