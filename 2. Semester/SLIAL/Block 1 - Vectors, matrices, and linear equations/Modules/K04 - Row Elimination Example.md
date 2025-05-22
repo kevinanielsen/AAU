@@ -62,7 +62,7 @@ $$\begin{bmatrix*}[r]
 \end{bmatrix*}$$
 At this point, the matrix is in the row echelon form!
 
-# Final Result
+# 1 Final Result
 $$\begin{bmatrix*}[r]
 1 & 4 & 5 & -9 & -7 \\
 0 & 2 & 4 & -6 & -6 \\
