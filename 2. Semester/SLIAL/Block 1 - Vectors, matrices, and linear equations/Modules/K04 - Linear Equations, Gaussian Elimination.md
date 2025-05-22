@@ -142,7 +142,7 @@ $$
 **Leading Entry**: The leftmost nonzero entry in each row
 A matrix is in row-echelon form if:
 - All rows consisting of only zero entries are at the bottom of the matrix
-- The leading entry of each nonzero row is to the right of the learding entry of every row above it.
+- The leading entry of each nonzero row is to the right of the leading entry of every row above it.
 ### 4.2.1 Example
 The following matrix is in the row echelon form. The leading entries are marked bold.  $*$ entries may be zero or nonzero
 $$
