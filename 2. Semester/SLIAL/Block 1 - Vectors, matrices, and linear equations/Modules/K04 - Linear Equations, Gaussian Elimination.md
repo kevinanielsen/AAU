@@ -217,7 +217,7 @@ Let $R$ be the row echelon form of the tableau $[A \vert b]$, and suppose that t
 To summarize:
 - No solutions: The last column ($b$-column) is a pivot column.
 - Unique (1) solution: Solution exists and all columns corresponding to variables are pivot columns.
-![[Pasted image 20250519141600.png]]
+![[row_echelon_with_unique_solution]]
 - Infinitely many solutions: Solution exists and free variables.
 ## 4.8 Backward Substitution Algorithm
 Assuming we have linear system with a solution and which we have converted to the row echelon form.
