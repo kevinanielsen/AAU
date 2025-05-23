@@ -1,0 +1,46 @@
+$$A = \begin{bmatrix*}[r]
+1 & 2 \\ 3 & 4
+\end{bmatrix*}$$
+1. Compute
+$$
+\begin{aligned}
+&q_1 = \frac{a_1}{\Vert a_1 \Vert}, &\Vert a_1 \Vert = \sqrt{1^2+3^2}=\sqrt{10}, &&q_1=\frac{1}{\sqrt{10}}\begin{bmatrix*}[r]
+1 \\ 3
+\end{bmatrix*}
+\end{aligned}
+$$
+2. Project and subtract
+$$
+r_{12}=q_1^Ta_2=\frac{1 \cdot 2 + 3 \cdot 4}{\sqrt{10}}=\frac{14}{\sqrt{10}},
+$$
+$$
+\tilde q_2=a_2-r_{12}q_1= \begin{bmatrix*}[r] 2 \\ 4 \end{bmatrix*} - \frac{14}{\sqrt{10}}\frac{1}{\sqrt{10}}\begin{bmatrix*}[r] 1 \\ 3 \end{bmatrix*} = \begin{bmatrix*}[r] 2 \\ 4 \end{bmatrix*} - \frac{14}{10}\begin{bmatrix*}[r]
+1 \\ 3
+\end{bmatrix*} = \begin{bmatrix*}[r]
+2 - 1.4 \\ 4 - 4.2
+\end{bmatrix*} = \begin{bmatrix*}[r]
+0.6 \\ -0.2
+\end{bmatrix*}
+$$
+3. Normalize
+$$
+r_{22}=\Vert \tilde q_2 \Vert = \sqrt{0.6^2+(-0.2)^2}=\sqrt{0.4}
+$$
+$$
+q_2=\frac{\tilde q_2}{r_{22}}=\frac{1}{\sqrt{0.4}} \begin{bmatrix*}[r]
+0.6 \\ -0.2
+\end{bmatrix*} = \begin{bmatrix*}[r]
+\frac{0.6}{\sqrt{0.4}} \\ \frac{0.2}{\sqrt{0.4}}
+\end{bmatrix*}
+$$
+4. Assemble
+$$
+\begin{aligned}
+&Q = \begin{bmatrix*}[r]
+\frac{1}{\sqrt{10}} & \frac{0.6}{\sqrt{0.4}} \\
+\frac{3}{\sqrt{10}} & \frac{0.2}{\sqrt{0.4}}
+\end{bmatrix*}, & R = \begin{bmatrix*}
+\sqrt{10} & \frac{14}{\sqrt{10}} \\ 0 & \sqrt{0.4}
+\end{bmatrix*}
+\end{aligned}
+$$
