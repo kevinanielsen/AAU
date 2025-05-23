@@ -295,3 +295,22 @@ $$
 $$
 \Vert D \Vert = \sqrt{5^2 + (-5)^2 + 5^2}=\sqrt{75}
 $$
+# Using Gaussian Elimination to Check for Linear Independence
+$$
+\begin{aligned}
+A= \begin{bmatrix*}[r]
+1 & 3 & 2 \\ 2 & 1 & 5 \\ 0 & 4 & 4
+\end{bmatrix*} \to
+\begin{bmatrix*}[r]
+1 & 3 & 2 \\ 0 & -5 & 1 \\ 0 & 4 & 4
+\end{bmatrix*} \to
+\begin{bmatrix*}[r]
+1 & 3 & 2 \\ 0 & 4 & 4 \\0 & -5 & 1 \\
+\end{bmatrix*} \to
+\begin{bmatrix*}[r]
+1 & 3 & 2 \\ 0 & 4 & 4 \\ 0 & 0 & 6
+\end{bmatrix*}
+\end{aligned}
+$$
+No free variables, i.e., every column is a pivot means the columns are linearly independent.
+## QR Factorization
