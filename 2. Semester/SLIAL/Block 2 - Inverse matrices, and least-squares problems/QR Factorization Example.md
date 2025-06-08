@@ -1,3 +1,4 @@
+# 2 x 2 Matrix
 $$A = \begin{bmatrix*}[r]
 1 & 2 \\ 3 & 4
 \end{bmatrix*}$$
@@ -42,5 +43,60 @@ $$
 \end{bmatrix*}, & R = \begin{bmatrix*}
 \sqrt{10} & \frac{14}{\sqrt{10}} \\ 0 & \sqrt{0.4}
 \end{bmatrix*}
+\end{aligned}
+$$
+# 4 x 4 Matrix
+$$
+\begin{aligned}
+q_1 = \frac{a_1}{\Vert a_1 \Vert} = \begin{bmatrix}
+0 \\ 1 \\ 0 \\ 0
+\end{bmatrix}, &&r_{11} = \Vert a_1 \Vert = 1, &&r_{12} = q_1^Ta_2 = 0 
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\tilde q_2 = a_2-r_{12}q_1= \begin{bmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{bmatrix}, &&r_{22} = \Vert \tilde q_2 \Vert = 1, &&q_2=\frac{\tilde q_2}{r_{22}} = \begin{bmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{bmatrix}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+r_{13}=q_1^Ta_3 = 0, &&r_{23}=q_2^Ta_3 = 1, &&\tilde q_3 = a_3-r_{13}q_1-r_{23}q_2 = \begin{bmatrix}
+1 \\ 0 \\ 0 \\ 0
+\end{bmatrix}, &&r_{33}=\Vert \tilde q_3 \Vert = 1, &&q_3 = \frac{\tilde q_3}{r_{33}} = \begin{bmatrix}
+1 \\ 0 \\ 0 \\ 0
+\end{bmatrix}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+r_{14}=q_1^Ta_4=0, && r_{24}=q_2^Ta_4=0, &&r_{34} = q_3^Ta_4= 0
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\tilde q_4 = a_4-r_{14}q_1 - r_{24}q_2 - r_{34}q_3 = \begin{bmatrix}
+0 \\ 0 \\ 0 \\ 1
+\end{bmatrix}, &&r_{44}=\Vert \tilde q_4 \Vert = 1, && q_4=\frac{\tilde q_4}{r_{44}} =  \begin{bmatrix}
+0 \\ 0 \\ 0 \\ 1
+\end{bmatrix}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+Q = \begin{bmatrix}
+0 & 0 & 1 & 0 \\ 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\ 
+0 & 0 & 0 & 1 \\
+\end{bmatrix}, &&R = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
 \end{aligned}
 $$

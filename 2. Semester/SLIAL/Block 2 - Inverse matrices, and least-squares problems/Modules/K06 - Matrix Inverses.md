@@ -45,7 +45,7 @@ $$
 A matrix with orthonormal columns satisfies $A^TA=I$, so it is left-invertible; its transpose $A^T$ is a left inverse.
 
 ## 2.2 Left-Invertibility and Column Independence
-If $A$ has a left inverse $C$ then the columns of $A$ are linearly independent.
+If $A$ has a left inverse $C$ then the columns of $A$ are [[K02 - Linear Independence|linearly independent]].
 To see this, suppose that $Ax=0$
 $$
 0=C(Ax)=(CA)x=Ix=x
