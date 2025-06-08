@@ -132,4 +132,5 @@ Has a runtime complexity of $\Theta (\log n)$.
 - Return max.
 
 Has a runtime complexity of $\Theta (\log n)$. 
+
 [[heap_extract_max_pseudo.png|Heap-Extract-Max Pseudo Code]]
