@@ -134,3 +134,70 @@ Has a runtime complexity of $\Theta (\log n)$.
 Has a runtime complexity of $\Theta (\log n)$. 
 
 [[heap_extract_max_pseudo.png|Heap-Extract-Max Pseudo Code]]
+# 6 Binary Search Trees
+Is represented using pointers instead of an array, meaning we do not need to know the size of the tree when initializing it.
+- Every node `x` is an object with 4 attributes.
+	- `x.key` stores the value/key of the node.
+	- `x.p` points to the parent node.
+	- `x.left`, `x.right` points to the left and right children.
+- `T.root` points to the root of the tree. `x.p = NIL` if and only if `x = T.root`.
+
+We can extend the tree so it does not only have 2 children for each node, we do this by replacing `x.left`, `x.right` with `x.left-child` and `x.right-sibling`, in this way we can still traverse the whole tree, but there is no limitation on the amount of children each node can have. (This would not be called a binary tree.)
+
+A valid binary search tree fulfills the Binary-Search-Tree property, stating that: For two nodes `x,y` in a binary search tree:
+- If `y`is a node of the left sub-tree of `x`, then `y.key <= x.key`.
+- If `y`is a node of the right sub-tree of `x`, then `y.key >= x.key`.
+
+So, for a heap the children must have lower values than the parents, in a binary search tree everything to the left must be lower than or equal, while everything on the right must be bigger than or equal.
+## 6.1 Operations
+### 6.1.1 Inorder-Tree-Walk
+We can use the BST-property to print all keys in order.
+- It takes a node `x`and prints first all keys in the left subtree, then `x.key`, and lastly all keys in the right subtree
+
+[[inorder_tree_walk_pseudo.png|Inorder-Tree-Walk Pseudo Code]]
+
+It has a runtime complexity of $\Theta(n)$ (for a tree with `n` nodes).
+### 6.1.2 Iterative-Tree-Search
+- A while-loop tests if `x` is NIL or if `x.key = k`.
+- If `k` is less than `x.key`, we look in the left subtree, otherwise we look in the right subtree.
+- It ends once we have found the right element or `x` is set to NIL.
+
+[[iterative_tree_search_pseudo.png|Iterative-Tree-Search Pseudo Code]]
+
+Since every iteration moves down a level in the tree, the algorithm has a runtime complexity of $O(h)$.
+### 6.1.3 Tree-Minimum & Tree-Maximum
+[[tree_minimum_pseudo.png|Tree-Minimum Pseudo Code]]
+[[tree_maximum_pseudo.png|Tree-Maximum Pseudo Code]]
+
+Both run in $O(h)$. 
+### 6.1.4 Tree-Successor
+- Given a node `x` in a BST `T`, Tree-Successor finds the node that has the smallest key that is bigger than `x.key`.
+- Either the successor is the smalles element in the right subtree of `x`, or
+- We need to crawl up the tree until we find the first node that has `x` in its left subtree.
+
+[[tree_successor_pseudo.png|Tree-Successor Pseudo Code]]
+
+Runs in $O(h)$.
+### 6.1.5 Tree-Insert
+- Takes in a tree `T` and a node `z`.
+- We define `x` to be the node, which we compare with `z` (starting off by using `T.root`), and `y` as the parent to `x`.
+- As long as `x` is not NIL, we compare `z.key` with `x.key` and move either left or right in the tree.
+- When `x` is NIL, we set `z`'s parent to be `y`.
+- If `y` is NIL, then the tree is empty, and `z` is the new root. Otherwise, we insert `x`as either the left of right child of `y`.
+
+[[tree_insert_pseudo.png|Tree-Insert Pseudo Code]]
+
+The worst case scenario is if the insertion data is sorted, then we will basically get a linked list and the operations will have a runtime complexity of $O(n)$. If the data is in a random order instead, then the runtime will be the expected height of the tree, $O(\log n)$.
+### 6.1.6 Tree-Delete
+Deleting a node from a BST requires that we take account for the scenario that it might have two children. If that is the case, we take the left-most node of the right subtree, and set it as the new element.
+- First, we cover the scenario where `z` only has a single child, in which case we just move the child up.
+- If `z` has two children, we find its successor `y`.
+- If `y` is not its right child, we
+	- replace `y` with `y`'s right child and
+	- move pointers so `y`'s right child is now `z`'s right child.
+- We then know that `y` is the right child of `z` and we can then just replace `z` with `y`.
+
+[[tree_delete_pseudo.png|Tree-Delete Pseudo Code]]
+[[transplant_pseudo.png|Transplant Pseudo Code]]
+
+It has a runtime complexity of $O(h)$.
