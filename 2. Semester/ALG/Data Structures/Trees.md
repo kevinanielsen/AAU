@@ -147,6 +147,7 @@ With these properties, we can guarantee that the height of a RBT with `n` intern
 - If the sibling of `z`'s parent is red, then both it and the parent of `z` is changed to black, while the grandparent of `z` is changed to red, and we continue from the grandparent.
 - If the sibling of the parent was not red, and `z` is a right child, then we do a Left-Rotate.
 - If `z` is a left child, then we do a Right-Rotate (the inverse of Left-Rotate).
+
 [[rb_insert_fixup_pseudo.png|RB-Insert-Fixup Pseudo Code]]
 ### 3.1.3 RB-Insert
 - Starts off with Tree-Insert from BST's, then sets the value of `z.left`, `z.right` to NIL pointers, and the color of `z` to RED.
