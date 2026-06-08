@@ -21,3 +21,56 @@
 - **Watch the Program Counter (PC):** For PC-relative instructions (like `LD` and `BR`), **never forget that the PC has already been incremented** before the offset is calculated and applied.
 - **Building Symbol Tables:** A symbol table maps a label to its memory address. Remember that **a label does not point to the "next line;" it points to the exact address of the line on which the label appears**. Write down the address beside every non-empty line rather than trying to do it mentally.
 - **Strings:** Whenever you process strings using `.STRINGZ`, remember that the string is stored as data in memory with a final "0" (null terminator) marking the end.
+
+# Common Commands
+### Arithmetic & Logic
+_(Note: These instructions always update the N, Z, P condition codes)_
+
+- **`ADD DR, SR1, SR2`** / **`ADD DR, SR1, imm5`**
+    - **Description:** Adds two registers OR a register and a small hardcoded number (-16 to +15).
+
+- **`AND DR, SR1, SR2`** / **`AND DR, SR1, imm5`**
+    - **Description:** Bitwise AND. Essential for isolating bits (masking) or clearing a register entirely (`AND R1, R1, #0`).
+
+- **`NOT DR, SR`**
+    - **Description:** Bitwise NOT. Flips all 1s to 0s and 0s to 1s. The first step in creating a negative number.
+
+### Data Movement
+_(Note: `LD`, `LDI`, and `LDR` update condition codes. `ST`, `STI`, `STR`, and `LEA` do not)._
+
+- **`LD DR, label`**
+    - **Description:** Load. Fetches data from a nearby memory address and places it in a register.
+
+- **`LDR DR, BaseR, offset6`**
+    - **Description:** Load Base+Offset. Fetches data using an address calculated from a base register plus a small offset.
+
+- **`LDI DR, label`**
+    - **Description:** Load Indirect. Looks at a memory address to find a _second_ memory address, then loads the data from that second location.
+
+- **`LEA DR, label`**
+    - **Description:** Load Effective Address. Calculates a memory address and stores the **address itself** into a register (does not fetch the data).
+
+- **`ST SR, label`**
+    - **Description:** Store. Saves a register's current value into a nearby memory location.
+
+- **`STR SR, BaseR, offset6`**
+    - **Description:** Store Base+Offset. Saves a register's value to an address calculated using a base register plus an offset.
+
+- **`STI SR, label`**
+    - **Description:** Store Indirect. Looks up a pointer in memory, and saves the register's value to that destination address.
+
+### Control Flow
+- **`BR[nzp] label`**
+    - **Description:** Conditional Branch. Jumps to a specific label _only if_ the chosen condition codes (`n`, `z`, or `p`) match the result of the last operation.
+
+- **`JMP BaseR`**
+    - **Description:** Unconditional Jump. Forces the Program Counter to jump to the exact address currently held in a specific register.
+
+- **`JSR label`** / **`JSRR BaseR`**
+    - **Description:** Jump to Subroutine. Jumps to a block of code (like a function) and automatically saves the return address in **R7**.
+
+- **`RET`**
+    - **Description:** Return. Forces the Program Counter to the address stored in **R7**, effectively exiting a subroutine.
+
+- **`TRAP xVector`** (Includes `HALT`, `IN`, `OUT`, `PUTS`)
+    - **Description:** System Call. Pauses the user program to allow the Operating System to handle a specific routine, usually related to Input/Output.

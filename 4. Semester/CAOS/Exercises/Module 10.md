@@ -19,9 +19,17 @@ $$2^{20} \text{ entries} \times 4 \text{ bytes}/\text{entry}=4,194,304 \text{ by
 Therefore, the approximate size of the page table is **4 MB**.
 
 3. **Given the following instruction sequence:**
+![[Pasted image 20260608130352.png]]
 	**a) Explain the data flow between memory and registers.**
+	- `movq A, %rax` (Load): Memory $\rightarrow$ Register
+- `movq B, %rbx` (Load): Memory $\rightarrow$ Register
+- `addq %rbx, %rax` (Execute): Register $\rightarrow$ ALU $\rightarrow$ Register _(No memory accessed)_
+- `movq %rax, C` (Store): Register $\rightarrow$ Memory
 
 	**b) Discuss how temporal and spatial locality apply to these operations and how the memory hierarchy affects execution time.**
+- Spatial Locality: The CPU fetches these sequential instructions together into the L1 cache. If variables `A`, `B`, and `C` are stored next to each other in RAM, loading `A` brings `B` and `C` into the cache too.
+- Temporal Locality: Register `%rax` is used in three consecutive steps, keeping the "hot" data right where the CPU needs it.
+- Execution Time: Using the cache and registers for these operations prevents the CPU from stalling while waiting on slow main memory, drastically speeding up the program.
 
 4. **Suppose that a memory system has the following**
 - **10-bit virtual addresses**
@@ -33,8 +41,13 @@ $$
 S_{VM}=2^{10}=1KB
 $$
 $$
-P=\dfrac{2^{10}}{2^4}=2^6=64\text{ bits}=\underline{\underline{4\text{ bytes}}}
+P=\dfrac{2^{10}}{2^4}=2^6=64\text{ bytes}
 $$
 	**b) How many bits are needed for the physical address?**
-$$64\text{ bits} \times 8 = 512 \text{ bits}$$
+$$\text{PFN bits}=\log_2(P_{\text{frames}})=\log_2(8)=3\text{ bits}$$
+$$p=\log_2(P)=\log_2(64)=6\text{ bits}$$
+$$3+6=9\text{ bits}$$
+
 	**c) What is the total virtual memory size and the total physical memory size?**
+Physical memory size: $64\text{ bytes/frame} \times 8\text{ frames} = 512 \text{ bytes}$.
+Virtual memory size: $2^{10} \text{ bytes} = 1\text{K bytes}$.

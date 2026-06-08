@@ -8,7 +8,20 @@ When solving these, the most important rule to remember is that **the offset bit
 - **$P_{\text{frames}}$** = Total number of Physical Page Frames
 - **$S_{VM}$** = Total Virtual Memory capacity (in bytes)
 - **$S_{PM}$** = Total Physical Memory capacity (in bytes)
+### Units
+#### 1. Always measured in BITS (The Wires)
+These variables represent the physical address lines or the binary numbers used to find a location. They will **never** be bytes.
 
+- **$N_{VA}$** (Virtual Address length) -> e.g., 32 bits
+- **$N_{PA}$** (Physical Address length) -> e.g., 24 bits
+- **$p$** (Page offset) -> e.g., 12 bits
+- **VPN / PFN** (Page/Frame numbers) -> e.g., 20 bits
+#### 2. Always measured in BYTES (The Storage)
+In a byte-addressable system, these variables represent the actual data capacity. Because 1 address points to 1 byte, $2^{\text{address bits}}$ will always yield bytes.
+
+- **$S_{VM}$** (Total Virtual Memory Size) -> e.g., 4 GB
+- **$S_{PM}$** (Total Physical Memory Size) -> e.g., 16 MB
+- **$P$** (Page Size) -> e.g., 4 KB
 ## 1. Memory Capacities
 If you know the number of address bits, you can find the total memory capacity. Conversely, if you know the capacity, you can find the number of address bits using log base 2.
 
@@ -53,6 +66,11 @@ Every address is split into two parts: the identifier (which page/frame you are 
 - **PFN (Physical Frame Number) bits** = $N_{PA} - p$
     - _(Alternatively: $\text{PFN bits} = \log_2(P_{\text{frames}})$)_
 - **Offset bits** = $p$
+
+**Total Address Bits:**
+
+- $N_{VA} = \text{VPN bits} + p$
+- $N_{PA} = \text{PFN bits} + p$
 
 ## Quick Power-of-2 Cheat Codes
 Since almost all of these problems require moving between exponents and bytes, keep these conversions handy so you don't have to calculate them manually:

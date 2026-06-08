@@ -119,3 +119,30 @@ A non-pipelined system takes 50 ns to process a task. The same task can be proce
 - **$S_{max} = 5$
 
 _(Explanation: For 100 tasks, the pipeline is 4.81 times faster. If we ran millions of tasks, the speedup would gradually creep closer and closer to exactly 5 times faster, but it will never exceed 5.)_
+# What is the Largest Address That x Can Load From
+![[Pasted image 20260608164534.png]]
+## 1. The Address Calculation Formula
+
+In LC-3, the `LDR` (Load Base+Offset) instruction calculates the target memory address by adding the value currently in the base register to a sign-extended 6-bit offset that is embedded directly in the instruction:
+
+`Address = BaseR + SEXT(offset6)`
+
+## 2. Finding the Maximum Offset
+The `offset6` field gives you exactly 6 bits to work with. Because it is a _signed_ two's complement number, it can represent both negative and positive offsets.
+
+- The total range of a 6-bit signed integer is -32 to +31.
+- Therefore, the _largest_ possible positive offset you can add to the base address is **+31**, which translates to **0x1F** in hexadecimal.
+
+## 3. The Final Calculation
+The problem states your base register (R3) currently contains `0x4011`.
+
+To find the absolute largest address this specific instruction can reach, simply add the maximum positive offset to the base register value:
+
+`0x4011 + 0x001F = 0x4030`
+
+## The Red Herring
+You might be wondering what to do with the `0x3220` location. The answer is: absolutely nothing!
+
+The physical location of the instruction itself is completely irrelevant for `LDR`. The current Program Counter (PC) only matters for PC-relative instructions (like `LD`, `ST`, or `LEA`), which use a 9-bit offset added to the PC. For `LDR`, the base register does all the heavy lifting.
+
+The final answer is **0x4030**. You are going to crush the exam tomorrow!
