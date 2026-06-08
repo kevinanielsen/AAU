@@ -1,0 +1,6 @@
+![[von neumann model.png|Von Neumann Model|600]]
+![[memory.png|Memory|600]]
+![[interface to memory.png|Interface to Memory|600]]
+![[processing unit.png|Processing Unit|600]]
+![[input and output.png|Input and Output|600]]
+![[control unit.png|Control Unit|600]]

@@ -17,6 +17,5 @@ FR12: The driver should be able to add and remove their vehicles (make, model, a
 ## System Functionality
 FR13: The system should be able to monitor the energy transfer in real time.
 FR14: The system should be able to process billing based on usage in kWh.
-
 # Class Diagram
 ![[ev-class-diagram.png]]

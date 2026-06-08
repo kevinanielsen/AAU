@@ -1,0 +1,143 @@
+# NULL, FIRST, FOLLOW, Parsing/LL(1) Tables
+Identifying the correct LL(1) grammar, defining the new augmented grammar, computing the sets (NULL, FIRST, FOLLOW), and finally building the parsing table.
+## Step 1: Identify the LL(1) Grammar
+An LL(1) grammar must be unambiguous and cannot have left recursion. Let's evaluate the three options provided in the first image:
+
+- **Grammar $G_1$** ($P \rightarrow \epsilon \mid (P) \mid PP$): This is highly ambiguous. A string like `()` can be derived multiple ways (e.g., from $(P)$ or from $PP$). Ambiguous grammars are never LL(1).
+- **Grammar $G_3$** ($P \rightarrow \epsilon \mid P(P)$): This contains immediate left recursion ($P \rightarrow P\dots$). Left-recursive grammars cause infinite loops in top-down parsers and are never LL(1).
+- **Grammar $G_2$** ($P \rightarrow \epsilon \mid (P)P$): This is neither ambiguous nor left-recursive.
+
+Therefore, **$G_2$ is our LL(1) grammar**.
+## Step 2: Define the Augmented Grammar
+The problem asks us to add a new axiom (start symbol) $A$ and an end-of-file terminal $\#$. Our working grammar is now:
+1. $A \rightarrow P\#$
+2. $P \rightarrow (P)P$
+3. $P \rightarrow \epsilon$
+- **Non-terminals:** $\{ A, P \}$
+- **Terminals:** $\{ (, ), \# \}$
+## Step 3: Compute NULL (Nullable Sets)
+A non-terminal is NULL (nullable) if it can derive the empty string ($\epsilon$).
+- **$P$:** The rule $P \rightarrow \epsilon$ exists, so **$NULL(P) = \text{true}$**.
+- **$A$:** The rule is $A \rightarrow P\#$. While $P$ can be $\epsilon$, $\#$ is a terminal. Therefore, $A$ must always at least produce $\#$. **$NULL(A) = \text{false}$**.
+## Step 4: Compute FIRST Sets
+==Compute FIRST for the *productions*, not the entire non-terminals when the goal is making a LL(1) table==.
+The FIRST set contains all terminals that can appear as the first symbol of a string derived from a non-terminal.
+- **$FIRST(P)$:** Looking at $P \rightarrow (P)P$, the first symbol is the terminal `(`. The $\epsilon$ production doesn't add terminals to the FIRST set. Thus, **$FIRST(P) = \{ ( \}$**.
+- **$FIRST(A)$:** Looking at $A \rightarrow P\#$. Since $P$ is nullable, the first symbol of $A$ can either be the first symbol of $P$ (which is `(`), or, if $P$ goes to $\epsilon$, the symbol immediately following it (which is `#`). Thus, **$FIRST(A) = \{ (, \# \}$**.
+## Step 5: Compute FOLLOW Sets
+The $\text{FOLLOW}$ set contains all terminals that can immediately appear to the right of a non-terminal in any valid derivation.
+### The general rules to remember
+Given a rule $A → α B β$:
+1. Everything in $\text{FIRST}(β)$ goes into $\text{FOLLOW}(B)$
+2. If $β$ is nullable (or absent), then everything in $\text{FOLLOW}(A)$ also goes into $\text{FOLLOW}(B)$
+## Step 6: Construct the Expansion Table
+Also known as the LL(1) parsing table, this dictates which production rule to apply given the current non-terminal on the stack and the current lookahead terminal.
+
+**Rules for populating the table:**
+for each non-terminal $X$ and each terminal $t$, you put production $X \to \alpha$ in cell $(X,t)$ if:
+- $t \in \text{FIRST}(\alpha)$, or
+- $\alpha$ is nullable and $t \in \text{FOLLOW}(X)$
+
+**Building the rows:**
+- **Row $A$ (Rule $A \rightarrow P\#$):** $FIRST(P\#) = \{ (, \# \}$. So, we place $A \rightarrow P\#$ under columns `(` and `#`.
+- **Row $P$ (Rule $P \rightarrow (P)P$):** $FIRST((P)P) = \{ ( \}$. So, we place $P \rightarrow (P)P$ under column `(`.
+- **Row $P$ (Rule $P \rightarrow \epsilon$):** Since this rule is nullable, we look at $FOLLOW(P)$, which is $\{ ), \# \}$. So, we place $P \rightarrow \epsilon$ under columns `)` and `#`.
+
+| **Non-Terminal** | **(**                | **)**                    | **#**                    |
+| ---------------- | -------------------- | ------------------------ | ------------------------ |
+| **$A$**          | $A \rightarrow P\#$  |                          | $A \rightarrow P\#$      |
+| **$P$**          | $P \rightarrow (P)P$ | $P \rightarrow \epsilon$ | $P \rightarrow \epsilon$ |
+
+Because every cell contains at most one rule, we have successfully proved that this augmented grammar is indeed LL(1).
+
+Would you like to trace a specific string, like `(())#`, through this parsing table to see how a top-down parser would process it?
+# Ambiguity
+To test if a grammar is **ambiguous**, you need to prove that it can produce **more than one distinct parse tree** (or more than one leftmost/rightmost derivation) for the exact same input string.
+
+While checking for LL(1) can be done with a strict checklist, testing for ambiguity is a bit different: there is no universal algorithm that can look at any grammar and definitively say "this is unambiguous." Instead, you look for classic architectural flaws or prove ambiguity by finding a single conflicting example.
+
+Here are the primary ways to test for it.
+## 1. The Short-String Test (Proof by Counter-Example)
+The most common way to prove a grammar is ambiguous is to find a short string generated by the grammar that can be parsed in two different ways.
+
+Let's look back at your grammar $G_1$:
+$$P \rightarrow \epsilon \mid (P) \mid PP$$
+Let's pick the string: `()()`
+
+We can derive this string using two completely different structural trees:
+
+- **Parse Tree A:** Treat it as a pair of adjacent structures using $P \rightarrow PP$.
+    - The first $P$ derives `()`.
+    - The second $P$ derives `()`.
+- **Parse Tree B:** Start with $P \rightarrow PP$, but expand the _second_ $P$ into $PP$ first, making it $P \rightarrow P \ P \ P$. Then, let one of those $P$ blocks collapse into $\epsilon$.
+
+Because the same string `()()` can be structured structurally in multiple ways, the grammar is **ambiguous**.
+
+## 2. Look for Visual Red Flags
+
+There are a few structural dead giveaways that automatically mean a grammar is ambiguous. If you spot these, you don't even need to draw the trees:
+
+### A. Dangling Else
+
+Whenever a grammar allows an optional structural block to nested within itself without clear boundaries, it's ambiguous.
+
+$$S \rightarrow \text{if } E \text{ then } S \mid \text{if } E \text{ then } S \text{ else } S$$
+
+For the string `if E1 then if E2 then S1 else S2`, the parser cannot tell if the `else` belongs to the first `if` or the second `if`.
+
+### B. Cyclical Rules
+
+If a non-terminal can derive itself without consuming any tokens, it's ambiguous.
+
+$$A \rightarrow A$$
+
+For a string, you could loop $A \rightarrow A \rightarrow A$ an infinite number of times, generating infinite different parse trees for the exact same input.
+
+### C. Bidirectional Left/Right Combinations
+
+Look at your grammar $G_3$:
+
+$$P \rightarrow \epsilon \mid P(P)$$
+
+Because $P$ can expand on the left, and also contains a nested $P$ on the right, complex strings can branch wildly in either direction to form the same layout, causing structural ambiguity.
+
+## 3. The LL(1) Table Shortcut (Sufficient, but not Necessary)
+
+There is a very helpful mathematical relationship between LL(1) grammars and ambiguity:
+
+$$\text{If a grammar is LL(1)} \implies \text{It is completely unambiguous.}$$
+
+If you can successfully build an LL(1) parsing table and find **zero conflicts**, you have automatically proven the grammar is unambiguous.
+
+> ⚠️ **The Trap:** The reverse is _not_ true. If a grammar is not LL(1) (like if it has left-recursion), it **might still be unambiguous**. For example, standard math expression grammars with strict operator precedence are often completely unambiguous, even though they aren't LL(1) until they are factored.
+
+## Summary Checklist
+
+To test a grammar for ambiguity:
+
+1. **Check for obvious traps:** Look for dangling else clauses, cycles ($A \rightarrow A$), or un-prioritized operators (like $E \rightarrow E+E$).
+    
+2. **Try to break it:** Pick a small, repeating string (like `()()` or `a+a+a`) and try to draw two different parse trees for it. If you can, it's ambiguous.
+    
+3. **Check LL(1) status:** If it passes the LL(1) table test perfectly, it is guaranteed to be unambiguous.
+# Convert Left-Recursive Grammars
+The standard left-recursion elimination technique: replace `A → A α | β` with `A → β A'` and `A' → α A' | ε`.
+
+## Example
+$$
+\begin{array}{rcl}
+E &\to &E+T \;|\; T \\
+T &\to &T \times F \;|\; F \\
+F &\to &n \;|\; (E)
+\end{array}
+$$
+Becomes
+$$
+\begin{array}{lcl}
+E &\to &TE' \\
+E' &\to &+TE' \;|\; \epsilon \\
+T &\to &FT' \\
+T' &\to &\times FT' \;|\; \epsilon \\
+F &\to &n \;|\; (E)
+\end{array}
+$$
