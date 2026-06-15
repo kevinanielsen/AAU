@@ -3,12 +3,12 @@
 ### 2. c)
 ### 3. b)
 ## Q2:
-![[Image 1.jpeg|400]]
+![[02 - Areas/AAU/4. Semester/CAOS/Media/Image 1.jpeg|400]]
 ## Q3:
-![[Image.jpeg|400]]
-![[Image 2.jpeg|400]]
+![[02 - Areas/AAU/4. Semester/CAOS/Media/Image.jpeg|400]]
+![[02 - Areas/AAU/4. Semester/CAOS/Media/Image 2.jpeg|400]]
 ## Q4:
-![[Image 3.jpeg|400]]
+![[02 - Areas/AAU/4. Semester/CAOS/Media/Image 3.jpeg|400]]
 ## Q5:
 $N_{VA}=10$
 $V_{pages}=16$
@@ -37,18 +37,6 @@ LDR has a 6-bit signed offset, so the range is −32 to +31. The largest address
 | HELP1  | x4003   |
 | HERE   | x4012   |
 ### b)
-1. It looks at the INPUT label, sees x4000, goes to that memory address, grabs the value and saves it to R0
-2. It checks if the value was zero or positive
-	1. If it was, jumps to the "SKIP" label where it adds the input value from R0 and 0 and stores that in R1
-	2. It sets the value of R2 to 0 with the and operator
-	3. It adds R2 and R0, and stores the value in R2
-	4. It subtracts 1 from R1
-	5. If R1 > 0, repeat steps 3-5
-	6. If R1 <= 0, it looks at the "OUTPUT" label, sees x4001 and stores the value of R2 in there.
-	7. The program is done
-3. If the value was negative, it flips all 1s to 0s and 0s to 1s and saves that in R0
-4. It adds 1 to R0 and stores it in R0, thereby doing the 2s complement, i.e., making the input value positive.
-
 The program calculates the square of a value stored at memory address `x4000` and stores the result at memory address `x4001`.
 
 It does this by first loading the value using `LDI`. If the value is negative, it converts it to its absolute value using two's complement (`NOT` and `ADD #1`). It then uses `R1` as a loop counter and `R2` as an accumulator. It repeatedly adds the absolute value to `R2` exactly `R1` times. Finally, it uses `STI` to store the squared result.
@@ -99,3 +87,21 @@ Total time pipelined $= (8+200-1)\times 4ns=828ns$
 The speed up ratio is now $\dfrac{4000ns}{828ns}=4.83$
 The maximum speedup occurs when the number of tasks approaches infinity as the initial time it takes to fill the pipeline becomes mathematically insignificant.
 Max speedup $= \dfrac{20ns}{4ns}=5$ 
+# Q10
+## 3
+### b)
+**Chosen Lock:** `java.util.concurrent.locks.ReentrantReadWriteLock`
+
+**How it works:** A `ReentrantReadWriteLock` maintains a pair of associated locks: a `ReadLock` and a `WriteLock`.
+
+- The **ReadLock** is a shared lock. It can be acquired simultaneously by multiple threads (students), as long as the write lock is not currently held by any thread.
+    
+- The **WriteLock** is an exclusive lock. Only one thread (a teacher) can acquire it at a time. Furthermore, if a thread holds the write lock, no other thread can acquire either the read lock or the write lock until it is released.
+    
+
+**Why it was chosen:** The problem instructions explicitly mandate a classic "Readers-Writers" paradigm:
+
+1. _"Students can read the exam questions concurrently."_ 2. _"Teachers can write... but only one teacher can do so at a time to prevent inconsistency."_
+    
+
+If we had used a standard `ReentrantLock` or a `synchronized` block, it would have treated reading and writing equally, locking out other reading students while one student was merely viewing the questions. The `ReentrantReadWriteLock` perfectly fulfills the requirements by optimizing performance (allowing concurrent reads) while preserving thread safety and data consistency during writes (exclusive locking).

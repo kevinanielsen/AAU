@@ -5,10 +5,10 @@ Unless specified as preemptive (often called Shortest Remaining Time First), sta
 ## The Core Formulas
 Before building the timeline, here are the formulas you will use to calculate the requested metrics:
 - **Completion Time (CT):** The exact time the process finishes its execution.
-- **Turnaround Time (TAT):** The total time a process spends in the system.
-$$TAT = CT - Arrival\ Time$$
 - **Response Time (RT):** The time elapsed from when a process arrives to when it first gets the CPU.
 $$RT = First\ Start\ Time - Arrival\ Time$$
+- **Turnaround Time (TAT):** The total time a process spends in the system.
+$$TAT = CT - Arrival\ Time$$
 ## Walkthrough Example
 Here is a completely different set of processes to demonstrate the methodology.
 

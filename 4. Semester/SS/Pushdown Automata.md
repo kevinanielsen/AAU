@@ -1,0 +1,1 @@
+![[pushdown automaton definition.png|Pushdown Automaton Definition]]

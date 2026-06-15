@@ -19,7 +19,7 @@ is true. To show that $A$ is not a subset of $B$ we therefore only need to find 
 > [!NOTE] Theorems
 > * For every set $S$, it holds that $$
 > \emptyset \subseteq S \text{ and } S \subseteq S
-> $$. 
+> $$
 > * If the sets $A$ and $B$ are finite sets, it holds that 
 > $$
 > \left| A \cup B \right| = \left| A \right| + \left| B \right| - \left| A \cap B \right|
